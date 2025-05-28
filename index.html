@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduLearn</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #004080;
+      color: white;
+      padding: 20px 10%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 20px 10%;
+      background: white;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      margin: 20px 0;
+    }
+
+    .quiz button {
+      background: #004080;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px 0;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .quiz button:hover {
+      background: #0066cc;
+    }
+
+    footer {
+      background: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px 10%;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="EduLearn Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#lessons">Lessons</a></li>
+        <li><a href="#materials">Learning Materials</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h1>Welcome to EduLearn</h1>
+      <p>Your gateway to digital learning!</p>
+    </section>
+
+    <section id="lessons">
+      <h2>Lesson 1: Different Types of Cars and Their Uses</h2>
+      <p>In this lesson, you'll learn about various types of cars such as sedans, SUVs, trucks, and electric vehicles — including their primary uses and features.</p>
+      <iframe src="https://www.youtube.com/embed/your-lesson-video" frameborder="0"></iframe>
+
+      <div class="quiz">
+        <h3>Quick Quiz</h3>
+        <p>Which type of car is best suited for off-road driving?</p>
+        <ul>
+          <li><button>A. Sedan</button></li>
+          <li><button>B. SUV</button></li>
+          <li><button>C. Coupe</button></li>
+          <li><button>D. Convertible</button></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="materials">
+      <h2>Learning Materials</h2>
+      <ul>
+        <li><a href="https://example.com/car-types.pdf" target="_blank">PDF: Types of Cars and Their Uses</a></li>
+        <li><a href="https://example.com/car-video" target="_blank">Supplemental Video on Vehicle Functions</a></li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>EduLearn is dedicated to providing accessible education through digital tools and resources.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Follow us on:
+      <a href="https://facebook.com" target="_blank">Facebook</a> |
+      <a href="https://youtube.com" target="_blank">YouTube</a> |
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </p>
+    <p>&copy; 2025 EduLearn. All rights reserved.</p>
+  </footer>
+</body>
+</html>
