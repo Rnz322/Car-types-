@@ -102,19 +102,27 @@
       text-decoration: underline;
     }
 
-    /* Animated arrow styles */
-    .animated-arrow svg {
-      animation: bounce-color 2s infinite;
-      transform-origin: center bottom;
+    /* Animated credit text */
+    .animated-credit {
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, #ff0057, #00d2ff, #ffed00, #ff0057);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: colorFlow 5s linear infinite, floatUpDown 2s ease-in-out infinite;
+      display: inline-block;
     }
 
-    @keyframes bounce-color {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+    @keyframes colorFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
   </style>
 </head>
@@ -133,31 +141,16 @@
   <main>
     <section id="home">
       <h1>Welcome to EduLearn</h1>
-      <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
-        Your gateway to digital learning!
-        <span class="animated-arrow" aria-hidden="true">
-          <!-- SVG arrow up -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
-            <defs>
-              <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff0057" />
-                <stop offset="50%" stop-color="#00d2ff" />
-                <stop offset="100%" stop-color="#ffed00" />
-              </linearGradient>
-            </defs>
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
-          </svg>
-        </span>
-      </p>
+      <p>Your gateway to digital learning!</p>
     </section>
 
     <section id="lessons">
-      <h2>Types of Car Engines and How They Work</h2>
+      <h2>Lesson 1: Types of Car Engines and How They Work</h2>
       <p>In this lesson, you'll learn about different types of car engines such as inline, V-type, rotary, and electric motors — including how they function and what makes each unique.</p>
+      
       <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
-
+      
       <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/main/Types-of-Cars-Names-Pictures.webp" alt="Types of Cars" style="max-width: 50%; height: auto;" />
 
       <div class="quiz">
@@ -195,4 +188,5 @@
   </footer>
 </body>
 </html>
+
 
