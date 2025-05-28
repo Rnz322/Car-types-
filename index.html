@@ -89,6 +89,22 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Car Design Styles */
+    .car-design {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .car-image {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
   </style>
 </head>
 <body>
@@ -98,7 +114,6 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#lessons">Lessons</a></li>
-        <li><a href="#materials">Learning Materials</a></li>
         <li><a href="#about">About Us</a></li>
       </ul>
     </nav>
@@ -134,12 +149,9 @@
       </div>
     </section>
 
-    <section id="materials">
-      <h2>Learning Materials</h2>
-      <ul>
-        <li><a href="https://example.com/car-engines.pdf" target="_blank">PDF: Types of Car Engines</a></li>
-        <li><a href="https://example.com/engine-video" target="_blank">Supplemental Video on Engine Mechanisms</a></li>
-      </ul>
+    <!-- Car Design Section -->
+    <section class="car-design">
+      <img src="https://example.com/car-image.jpg" alt="Car Design" class="car-image" />
     </section>
 
     <section id="about">
