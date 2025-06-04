@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -18,32 +17,45 @@
       padding: 0;
       color: #333;
       position: relative;
-      z-index: 1;
+      overflow: hidden;
     }
 
-    /* ✅ 3D Background Layer */
-    body::before {
-      content: "";
-      background: url('https://img.freepik.com/free-vector/3d-car-podium-neon-background_1017-45006.jpg') no-repeat center center fixed;
-      background-size: cover;
-      position: fixed;
+    /* Fullscreen 3D animated background */
+    .particle-background {
+      position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
+      background: #fff;
       z-index: -1;
-      opacity: 0.2;
-      animation: floatBg 20s infinite linear alternate;
-      filter: blur(1.5px);
     }
 
-    @keyframes floatBg {
-      0% {
-        transform: scale(1) translateY(0);
-      }
-      100% {
-        transform: scale(1.05) translateY(-10px);
-      }
+    /* Particle animation */
+    @keyframes particleAnim {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .particle {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleAnim 1s infinite;
+    }
+
+    .particle-background .particle {
+      width: 10px;
+      height: 10px;
+      animation-duration: random(2s, 5s);
+      animation-delay: random(0s, 2s);
+    }
+
+    /* Original styles (unchanged) */
+    body {
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
     }
 
     header {
@@ -53,16 +65,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       animation: slideIn 1s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(0);
-      }
     }
 
     nav ul {
@@ -80,7 +86,7 @@
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       text-decoration: underline;
       color: #ffeb3b;
     }
@@ -91,7 +97,7 @@
 
     section {
       margin-bottom: 40px;
-      background: rgba(255, 255, 255, 0.95);
+      background: white;
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -165,6 +171,20 @@
       transform: scale(1.05);
     }
 
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .correct {
+      color: #4caf50;
+    }
+
+    .wrong {
+      color: #f44336;
+    }
+
     footer {
       background: #1976d2;
       color: white;
@@ -216,31 +236,171 @@
       animation: fadeInText 2s ease forwards;
       margin-top: 20px;
     }
+
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .quiz button {
+        width: 100%;
+      }
+
+      footer {
+        padding: 20px 5%;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <!-- Your existing full body content remains unchanged -->
-  <!-- Keep everything between <body> and </body> as-is -->
-  
-  <!-- Existing header, main, sections, footer, and script -->
-  <!-- I didn't copy it again here to save space since you already have it -->
+  <!-- Particle Background -->
+  <div class="particle-background">
+    <!-- Particles will be dynamically added here -->
+  </div>
+
+  <header>
+    <h1>EduLearn</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#lessons" class="nav-link">Lessons</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>Welcome to EduLearn</h2>
+      <p class="animated-tagline">Your gateway to digital learning!</p>
+    </section>
+
+    <section>
+      <h2>The Different Car Types & Their Benefits</h2>
+      <h3><span class="animated-icon">🚗</span> Hatchback</h3>
+      <p>A hatchback is a versatile car with a rear door that swings upward. It's popular for city driving due to its compact size, and many hatchbacks are known for fuel efficiency.</p>
+      <h3><span class="animated-icon">🚙</span> SUV</h3>
+      <p>An SUV (Sport Utility Vehicle) is perfect for families. It's spacious and ideal for long road trips. SUVs often offer off-road capabilities and high ground clearance.</p>
+      <h3><span class="animated-icon">🏎️</span> Sports Car</h3>
+      <p>Sports cars are built for speed and performance. These high-performance vehicles have sleek designs and powerful engines, perfect for driving enthusiasts.</p>
+      <h3><span class="animated-icon">🚐</span> Minivan</h3>
+      <p>Minivans are known for their large interiors and are perfect for large families. They offer plenty of seating and cargo space, making them a favorite for road trips.</p>
+      <h3><span class="animated-icon">🚚</span> Pickup Truck</h3>
+      <p>Pickup trucks are great for hauling goods and towing. They come with a variety of configurations and are popular among people who need to transport heavy loads.</p>
+    </section>
+
+    <section id="first-car">
+      <p class="animated-tagline" style="font-size: 1.1em; margin-bottom: 10px;">
+        This is the picture of the first car invented
+      </p>
+      <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/55eb7115249b9558633ae377d7b003dd3aee1a47/1st.jpg" alt="Benz Patent-Motorwagen - First Car" style="max-width: 400px; width: 100%; height: auto; display: block; margin-bottom: 20px;" />
+      <h2>Who invented the first car?</h2>
+      <p>The first modern automobile was invented by German engineer Karl Benz in 1885. Known as the Benz Patent-Motorwagen, this vehicle marked the birth of the automotive industry.</p>
+    </section>
+
+    <section id="lessons">
+      <h2>Types of Car Engines and How They Work</h2>
+      <p>In this lesson, you'll learn about different types of car engines, including internal combustion engines and electric engines. Understanding how engines work is essential for maintaining a car and ensuring it performs at its best.</p>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
+      <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
+
+      <p class="animated-text">
+        <strong>Why is it important to have a basic understanding of how a car works?</strong>
+        <br><br>
+        Understanding Mechanics: Knowledge of how engines work helps you understand when something goes wrong with your car. It also ensures you're more involved in taking care of your vehicle.
+      </p>
+
+      <div class="quiz">
+        <h3>Quiz Time!</h3>
+
+        <div class="quiz-item">
+          <h3>1. Which German engineer invented the first modern automobile?</h3>
+          <button onclick="checkAnswer(this, 'correct')">Karl Benz</button>
+          <button onclick="checkAnswer(this, 'wrong')">Gottlieb Daimler</button>
+          <button onclick="checkAnswer(this, 'wrong')">Henry Ford</button>
+          <button onclick="checkAnswer(this, 'wrong')">Nikolaus Otto</button>
+          <div class="feedback" id="feedback1"></div>
+        </div>
+
+        <div class="quiz-item">
+          <h3>2. What type of car is best for families with multiple children?</h3>
+          <button onclick="checkAnswer(this, 'wrong')">Sports Car</button>
+          <button onclick="checkAnswer(this, 'correct')">Minivan</button>
+          <button onclick="checkAnswer(this, 'wrong')">Pickup Truck</button>
+          <button onclick="checkAnswer(this, 'wrong')">SUV</button>
+          <div class="feedback" id="feedback2"></div>
+        </div>
+
+        <div class="quiz-item">
+          <h3>3. Which type of car is typically used for hauling goods?</h3>
+          <button onclick="checkAnswer(this, 'wrong')">Sports Car</button>
+          <button onclick="checkAnswer(this, 'wrong')">Hatchback</button>
+          <button onclick="checkAnswer(this, 'correct')">Pickup Truck</button>
+          <button onclick="checkAnswer(this, 'wrong')">Minivan</button>
+          <div class="feedback" id="feedback3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About EduLearn</h2>
+      <p>EduLearn is your digital learning companion, bringing educational resources right to your fingertips. Whether you're a student or a car enthusiast, our platform offers valuable insights and lessons on a variety of topics, including automotive technology and more!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EduLearn. All rights reserved.</p>
+    <p>Follow us on
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> |
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </p>
+  </footer>
 
   <script>
     function checkAnswer(button, correctness) {
+      const feedback = button.parentNode.querySelector('.feedback');
       if (correctness === 'correct') {
-        button.style.backgroundColor = '#4caf50';
-        alert('Correct!');
+        button.style.backgroundColor = '#4caf50'; // Green
+        feedback.textContent = 'Correct!';
+        feedback.classList.add('correct');
       } else {
-        button.style.backgroundColor = '#f44336';
-        alert('Wrong answer, try again!');
+        button.style.backgroundColor = '#f44336'; // Red
+        feedback.textContent = 'Wrong answer, try again!';
+        feedback.classList.add('wrong');
       }
+      feedback.style.display = 'block';
+
+      // Disable all buttons in the same quiz-item after one is clicked
       const quizItem = button.parentNode;
       const buttons = quizItem.querySelectorAll('button');
       buttons.forEach(btn => btn.disabled = true);
     }
+
+    // Active link styling
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
+
 
 
 
