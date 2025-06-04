@@ -17,7 +17,6 @@
       padding: 0;
       background: linear-gradient(to right, #e0f7fa, #fce4ec);
       color: #333;
-      overflow-x: hidden;
     }
 
     header {
@@ -27,8 +26,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
-      z-index: 10;
     }
 
     nav ul {
@@ -58,7 +55,7 @@
       background: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 1s ease forwards;
@@ -79,35 +76,39 @@
       }
     }
 
-    .parallax {
-      background: url('car-background.jpg') no-repeat fixed;
-      background-size: cover;
-      height: 100vh;
-      position: relative;
-      top: 0;
-      z-index: -1;
+    h1, h2 {
+      color: #00796b;
     }
 
-    .parallax-text {
+    h3 {
+      color: #c2185b;
+      margin-top: 20px;
+    }
+
+    .quiz {
+      margin-top: 30px;
+      background-color: #f3f3f3;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .quiz h3 {
+      margin-bottom: 10px;
+    }
+
+    .quiz button {
+      background: #00796b;
       color: white;
-      font-size: 3rem;
-      text-align: center;
-      padding-top: 200px;
-      animation: textAnimation 3s ease-in-out infinite alternate;
+      border: none;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 6px;
     }
 
-    @keyframes textAnimation {
-      0% { transform: translateY(0); opacity: 0.7; }
-      100% { transform: translateY(20px); opacity: 1; }
-    }
-
-    .hover-animate {
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .hover-animate:hover {
-      transform: scale(1.1);
-      color: #ff4081;
+    .quiz button:hover {
+      background: #004d40;
     }
 
     footer {
@@ -141,6 +142,31 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* Smooth Scroll for Navigation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Hover Effects */
+    h2, h3 {
+      transition: color 0.3s ease;
+    }
+
+    h2:hover, h3:hover {
+      color: #ff4081;
+    }
+
+    /* Animation for new content */
+    .fade-in {
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    /* Add icons next to the car types */
+    .car-icon {
+      font-size: 2em;
+      margin-right: 10px;
+    }
   </style>
 </head>
 <body>
@@ -148,41 +174,43 @@
     <h1>EduLearn</h1>
     <nav>
       <ul>
-        <li><a href="#home" class="hover-animate">Home</a></li>
-        <li><a href="#lessons" class="hover-animate">Lessons</a></li>
-        <li><a href="#about" class="hover-animate">About Us</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#lessons">Lessons</a></li>
+        <li><a href="#about">About Us</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="home" class="parallax">
-      <div class="parallax-text">Welcome to EduLearn - Your Gateway to Digital Learning!</div>
+    <section id="home">
+      <h2>Welcome to EduLearn</h2>
+      <p class="animated-tagline">Your gateway to digital learning!</p>
     </section>
 
     <section>
       <h2>The Different Car Types & Their Benefits</h2>
-      <h3>Hatchback</h3>
+
+      <h3><span class="car-icon">🚗</span>Hatchback</h3>
       <p>One of the most popular types of car in the UK is the hatchback. They’re pretty small, economical, and they do pretty much everything you need them to do with not much space to do it. These are things like your fiestas, A1-2s, even through to your A Classes and focuses. Any car that can be 3 doors is probably going to be a hatchback, so that’s often a good way to remember it.</p>
       <p>The benefits of these cars really come from using them to get from A-B when you’re in traffic. They may not be the fastest of cars but they’ll have a smaller engine and save you more fuel as a result. Awesome for light use or city life, and they’re cheaper too.</p>
 
-      <h3>Saloon</h3>
+      <h3><span class="car-icon">🚙</span>Saloon</h3>
       <p>Saloon cars are the next big player on the roads, and these are often the slightly larger engine car types that have a different shape too. Saloons are almost always 5 doors, and they are things like Insignias, Mondeos, A4s… Anything really.</p>
       <p>You can get cheaper models out there all the way through to higher-end business cars like Lexus, Maserati, Mercedes, Audis or BMWs. They’re all fast, reliable and pretty comfortable to drive.</p>
 
-      <h3>Estate</h3>
+      <h3><span class="car-icon">🚐</span>Estate</h3>
       <p>The most common types of estate cars come from modified saloon cars or even some larger sports cars. They’re extended so they have van-like practicality while still having some of the comfort and performance of smaller vehicles. They’re a great cross over usually with a larger engine.</p>
 
-      <h3>SUV</h3>
+      <h3><span class="car-icon">🚘</span>SUV</h3>
       <p>An SUV is a Sports Utility Vehicle, meaning it’s a utility vehicle like a 4×4, but it has a bit of a sportier edge. These cars though still being larger in size still tend to be able to get off the mark like nobody’s business. They again have a lot of variation, and they’re a petrol-guzzling powerhouse. Fast and practical, but not always convenient or affordable.</p>
 
-      <h3>4×4</h3>
+      <h3><span class="car-icon">🚙</span>4×4</h3>
       <p>4x4s are usually bigger, more off-road built cars that have sheer practicality in mind. If you’re working a farm, for example, a landrover may well be your best friend to battle all of the harsh terrains without getting stuck in the mud.</p>
 
-      <h3>People Carrier</h3>
+      <h3><span class="car-icon">🚐</span>People Carrier</h3>
       <p>These cars are literally built for just one reason: to carry more people than normal without compromising safety. They are certainly not the quickest or sleekest cars, but they do the job and have a larger engine to be able to move all of the added weight.</p>
 
-      <h3>Sports</h3>
+      <h3><span class="car-icon">🏎️</span>Sports</h3>
       <p>These are usually expensive and entirely built for acceleration and speed. They power through fuel, may not be large or comfortable, but they can move. That’s what they’re for, and they’re a lot of fun.</p>
     </section>
 
@@ -192,8 +220,23 @@
       <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
 
-      <p class="animated-tagline">Why is it important to have a basic understanding of how a car works?</p>
-      <p>Understanding Mechanics: Knowledge of how engines work helps you understand the mechanical systems in vehicles. This can improve your ability to diagnose problems and perform basic repairs.</p>
+      <div class="quiz">
+        <h3>Quick Quiz</h3>
+        <p>Which engine type is known for its compact design and high power output?</p>
+        <ul>
+          <li><button>A. Inline</button></li>
+          <li><button>B. Rotary</button></li>
+          <li><button>C. V-type</button></li>
+          <li><button>D. Electric</button></li>
+        </ul>
+        <p>What is a key advantage of electric motors over traditional combustion engines?</p>
+        <ul>
+          <li><button>A. Louder sound</button></li>
+          <li><button>B. Requires more fuel</button></li>
+          <li><button>C. Instant torque</button></li>
+          <li><button>D. Complex transmission</button></li>
+        </ul>
+      </div>
     </section>
 
     <section id="about">
@@ -212,6 +255,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
