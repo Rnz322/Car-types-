@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,6 @@
       padding: 0;
       color: #333;
       position: relative;
-      overflow: hidden;
     }
 
     /* Fullscreen 3D animated background */
@@ -61,7 +61,6 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      animation: slideIn 1s ease-out;
     }
 
     nav ul {
@@ -136,48 +135,6 @@
       animation: fadeInText 1s ease-out;
     }
 
-    .quiz {
-      margin-top: 30px;
-      background-color: #f3f3f3;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .quiz h3 {
-      margin-bottom: 10px;
-    }
-
-    .quiz button {
-      background: #00796b;
-      color: white;
-      border: none;
-      padding: 10px;
-      margin: 5px 0;
-      cursor: pointer;
-      width: 100%;
-      border-radius: 6px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .quiz button:hover {
-      background: #004d40;
-      transform: scale(1.05);
-    }
-
-    .feedback {
-      margin-top: 10px;
-      font-weight: bold;
-      display: none;
-    }
-
-    .correct {
-      color: #4caf50;
-    }
-
-    .wrong {
-      color: #f44336;
-    }
-
     footer {
       background: #1976d2;
       color: white;
@@ -211,16 +168,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    .animated-icon {
-      font-size: 24px;
-      margin-right: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .animated-icon:hover {
-      transform: scale(1.2);
-    }
-
     .animated-text {
       font-size: 1.2em;
       font-weight: normal;
@@ -245,10 +192,6 @@
 
       main {
         padding: 20px;
-      }
-
-      .quiz button {
-        width: 100%;
       }
 
       footer {
@@ -280,15 +223,15 @@
 
     <section>
       <h2>The Different Car Types & Their Benefits</h2>
-      <h3><span class="animated-icon">🚗</span> Hatchback</h3>
+      <h3>Hatchback</h3>
       <p>A hatchback is a versatile car with a rear door that swings upward. It's popular for city driving due to its compact size, and many hatchbacks are known for fuel efficiency.</p>
-      <h3><span class="animated-icon">🚙</span> SUV</h3>
+      <h3>SUV</h3>
       <p>An SUV (Sport Utility Vehicle) is perfect for families. It's spacious and ideal for long road trips. SUVs often offer off-road capabilities and high ground clearance.</p>
-      <h3><span class="animated-icon">🏎️</span> Sports Car</h3>
+      <h3>Sports Car</h3>
       <p>Sports cars are built for speed and performance. These high-performance vehicles have sleek designs and powerful engines, perfect for driving enthusiasts.</p>
-      <h3><span class="animated-icon">🚐</span> Minivan</h3>
+      <h3>Minivan</h3>
       <p>Minivans are known for their large interiors and are perfect for large families. They offer plenty of seating and cargo space, making them a favorite for road trips.</p>
-      <h3><span class="animated-icon">🚚</span> Pickup Truck</h3>
+      <h3>Pickup Truck</h3>
       <p>Pickup trucks are great for hauling goods and towing. They come with a variety of configurations and are popular among people who need to transport heavy loads.</p>
     </section>
 
@@ -306,43 +249,6 @@
       <p>In this lesson, you'll learn about different types of car engines, including internal combustion engines and electric engines. Understanding how engines work is essential for maintaining a car and ensuring it performs at its best.</p>
       <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
-
-      <p class="animated-text">
-        <strong>Why is it important to have a basic understanding of how a car works?</strong>
-        <br><br>
-        Understanding Mechanics: Knowledge of how engines work helps you understand when something goes wrong with your car. It also ensures you're more involved in taking care of your vehicle.
-      </p>
-
-      <div class="quiz">
-        <h3>Quiz Time!</h3>
-
-        <div class="quiz-item">
-          <h3>1. Which German engineer invented the first modern automobile?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Karl Benz</button>
-          <button onclick="checkAnswer(this, 'wrong')">Gottlieb Daimler</button>
-          <button onclick="checkAnswer(this, 'wrong')">Henry Ford</button>
-          <button onclick="checkAnswer(this, 'wrong')">Nikolaus Otto</button>
-          <div class="feedback" id="feedback1"></div>
-        </div>
-
-        <div class="quiz-item">
-          <h3>2. What type of car is best for families with multiple children?</h3>
-          <button onclick="checkAnswer(this, 'wrong')">Sports Car</button>
-          <button onclick="checkAnswer(this, 'correct')">Minivan</button>
-          <button onclick="checkAnswer(this, 'wrong')">Pickup Truck</button>
-          <button onclick="checkAnswer(this, 'wrong')">SUV</button>
-          <div class="feedback" id="feedback2"></div>
-        </div>
-
-        <div class="quiz-item">
-          <h3>3. Which type of car is typically used for hauling goods?</h3>
-          <button onclick="checkAnswer(this, 'wrong')">Sports Car</button>
-          <button onclick="checkAnswer(this, 'wrong')">Hatchback</button>
-          <button onclick="checkAnswer(this, 'correct')">Pickup Truck</button>
-          <button onclick="checkAnswer(this, 'wrong')">Minivan</button>
-          <div class="feedback" id="feedback3"></div>
-        </div>
-      </div>
     </section>
 
     <section id="about">
@@ -361,33 +267,6 @@
   </footer>
 
   <script>
-    function checkAnswer(button, correctness) {
-      const feedback = button.parentNode.querySelector('.feedback');
-      if (correctness === 'correct') {
-        button.style.backgroundColor = '#4caf50'; // Green
-        feedback.textContent = 'Correct!';
-        feedback.classList.add('correct');
-      } else {
-        button.style.backgroundColor = '#f44336'; // Red
-        feedback.textContent = 'Wrong answer, try again!';
-        feedback.classList.add('wrong');
-      }
-      feedback.style.display = 'block';
-
-      // Disable all buttons in the same quiz-item after one is clicked
-      const quizItem = button.parentNode;
-      const buttons = quizItem.querySelectorAll('button');
-      buttons.forEach(btn => btn.disabled = true);
-    }
-
-    // Active link styling
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function() {
-        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-
     // Particle effect setup
     let particles = [];
     let particleCount = 50;
