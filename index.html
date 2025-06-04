@@ -17,6 +17,7 @@
       padding: 0;
       background: linear-gradient(to right, #e0f7fa, #fce4ec);
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
@@ -26,14 +27,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      margin: 0;
     }
 
     nav ul {
@@ -48,11 +43,10 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #ffeb3b;
+      text-decoration: underline;
     }
 
     main {
@@ -64,7 +58,7 @@
       background: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 1s ease forwards;
@@ -85,40 +79,35 @@
       }
     }
 
-    h1, h2 {
-      color: #00796b;
+    .parallax {
+      background: url('car-background.jpg') no-repeat fixed;
+      background-size: cover;
+      height: 100vh;
+      position: relative;
+      top: 0;
+      z-index: -1;
     }
 
-    h3 {
-      color: #c2185b;
-      margin-top: 20px;
-    }
-
-    .quiz {
-      margin-top: 30px;
-      background-color: #f3f3f3;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .quiz h3 {
-      margin-bottom: 10px;
-    }
-
-    .quiz button {
-      background: #00796b;
+    .parallax-text {
       color: white;
-      border: none;
-      padding: 10px;
-      margin: 5px 0;
-      cursor: pointer;
-      width: 100%;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
+      font-size: 3rem;
+      text-align: center;
+      padding-top: 200px;
+      animation: textAnimation 3s ease-in-out infinite alternate;
     }
 
-    .quiz button:hover {
-      background: #004d40;
+    @keyframes textAnimation {
+      0% { transform: translateY(0); opacity: 0.7; }
+      100% { transform: translateY(20px); opacity: 1; }
+    }
+
+    .hover-animate {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .hover-animate:hover {
+      transform: scale(1.1);
+      color: #ff4081;
     }
 
     footer {
@@ -152,14 +141,6 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    /* Hover Effect for Section Titles */
-    h3:hover {
-      color: #ff4081;
-      transform: scale(1.05);
-      transition: all 0.3s ease-in-out;
-    }
-
   </style>
 </head>
 <body>
@@ -167,22 +148,20 @@
     <h1>EduLearn</h1>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#lessons">Lessons</a></li>
-        <li><a href="#about">About Us</a></li>
+        <li><a href="#home" class="hover-animate">Home</a></li>
+        <li><a href="#lessons" class="hover-animate">Lessons</a></li>
+        <li><a href="#about" class="hover-animate">About Us</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="home">
-      <h2>Welcome to EduLearn</h2>
-      <p class="animated-tagline">Your gateway to digital learning!</p>
+    <section id="home" class="parallax">
+      <div class="parallax-text">Welcome to EduLearn - Your Gateway to Digital Learning!</div>
     </section>
 
     <section>
       <h2>The Different Car Types & Their Benefits</h2>
-
       <h3>Hatchback</h3>
       <p>One of the most popular types of car in the UK is the hatchback. They’re pretty small, economical, and they do pretty much everything you need them to do with not much space to do it. These are things like your fiestas, A1-2s, even through to your A Classes and focuses. Any car that can be 3 doors is probably going to be a hatchback, so that’s often a good way to remember it.</p>
       <p>The benefits of these cars really come from using them to get from A-B when you’re in traffic. They may not be the fastest of cars but they’ll have a smaller engine and save you more fuel as a result. Awesome for light use or city life, and they’re cheaper too.</p>
@@ -213,23 +192,8 @@
       <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
 
-      <div class="quiz">
-        <h3>Quick Quiz</h3>
-        <p>Which engine type is known for its compact design and high power output?</p>
-        <ul>
-          <li><button>A. Inline</button></li>
-          <li><button>B. Rotary</button></li>
-          <li><button>C. V-type</button></li>
-          <li><button>D. Electric</button></li>
-        </ul>
-        <p>What is a key advantage of electric motors over traditional combustion engines?</p>
-        <ul>
-          <li><button>A. Louder sound</button></li>
-          <li><button>B. Requires more fuel</button></li>
-          <li><button>C. Instant torque</button></li>
-          <li><button>D. Complex transmission</button></li>
-        </ul>
-      </div>
+      <p class="animated-tagline">Why is it important to have a basic understanding of how a car works?</p>
+      <p>Understanding Mechanics: Knowledge of how engines work helps you understand the mechanical systems in vehicles. This can improve your ability to diagnose problems and perform basic repairs.</p>
     </section>
 
     <section id="about">
@@ -248,6 +212,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
