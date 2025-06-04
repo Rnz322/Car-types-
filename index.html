@@ -121,16 +121,6 @@
       margin-bottom: 10px;
     }
 
-    .quiz ul {
-      padding-left: 20px;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-
-    .quiz li {
-      margin-bottom: 8px;
-    }
-
     .quiz button {
       background: #00796b;
       color: white;
@@ -200,12 +190,14 @@
       margin-top: 20px;
     }
 
-    /* Specific animation for the Karl Benz section */
-    #inventor-section {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1.5s ease forwards;
-      animation-delay: 0.3s;
+    /* New style for the first car image */
+    #first-car img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease forwards;
     }
   </style>
 </head>
@@ -254,8 +246,9 @@
       <p>These are usually expensive and entirely built for acceleration and speed. They power through fuel, may not be large or comfortable, but they can move. That’s what they’re for, and they’re a lot of fun.</p>
     </section>
 
-    <!-- New Section: Who invented the first car? -->
-    <section id="inventor-section">
+    <section id="first-car">
+    <2>This is the picture of the first car</2>
+      <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/55eb7115249b9558633ae377d7b003dd3aee1a47/1st.jpg" alt="Benz Patent-Motorwagen - First Car" />
       <h2>Who invented the first car?</h2>
       <p>
         The first modern automobile was invented by German engineer Karl Benz in 1885. Known as the Benz Patent-Motorwagen, it was the world’s first car powered by a gasoline-powered internal combustion engine. Benz was granted a patent for his invention in 1886, marking the official birth of the automobile. In 1888, his wife Bertha Benz undertook the first long-distance journey in the vehicle, demonstrating its practicality and helping to spark public interest. While earlier steam-powered vehicles had been developed, Benz’s design is widely regarded as the first true car due to its innovative engine and practical usability.
@@ -265,77 +258,89 @@
     <section id="lessons">
       <h2>Types of Car Engines and How They Work</h2>
       <p>In this lesson, you'll learn about different types of car engines such as inline, V-type, rotary, and electric motors...</p>
-      <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
-      <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
-
-      <p class="animated-text">
-        <strong>Why is it important to have a basic understanding of how a car works?</strong>
-        <br><br>
-        Understanding Mechanics: Knowledge of how engines work helps you understand the mechanical systems in vehicles. This can improve your ability to diagnose problems and perform basic repairs.
-      </p>
-
-      <div class="quiz">
-        <h3>Quick Quiz</h3>
-        <p>Which engine type is known for its compact design and high power output?</p>
-        <ul>
-          <li><button>A. Inline</button></li>
-          <li><button>B. Rotary</button></li>
-          <li><button>C. V-type</button></li>
-          <li><button>D. Electric</button></li>
-        </ul>
-        <p>What is a key advantage of electric motors over traditional combustion engines?</p>
-        <ul>
-          <li><button>A. Louder sound</button></li>
-          <li><button>B. Requires more fuel</button></li>
-          <li><button>C. Instant torque</button></li>
-          <li><button>D. Complex transmission</button></li>
-        </ul>
-
-        <!-- New Quizzes -->
-        <h3>Additional Quizzes</h3>
-
-        <p>What year did Karl Benz receive a patent for his invention of the automobile?</p>
-        <ul>
-          <li><button>A. 1875</button></li>
-          <li><button>B. 1886</button></li>
-          <li><button>C. 1890</button></li>
-          <li><button>D. 1901</button></li>
-        </ul>
-
-        <p>Who was the first person to take a long-distance trip in the Benz Patent-Motorwagen?</p>
-        <ul>
-          <li><button>A. Karl Benz</button></li>
-          <li><button>B. Bertha Benz</button></li>
-          <li><button>C. Henry Ford</button></li>
-          <li><button>D. Nikolaus Otto</button></li>
-        </ul>
-
-        <p>Why is Karl Benz’s car considered the first true automobile?</p>
-        <ul>
-          <li><button>A. It used a steam engine</button></li>
-          <li><button>B. It was electric powered</button></li>
-          <li><button>C. It had an innovative gasoline-powered internal combustion engine</button></li>
-          <li><button>D. It was made in America</button></li>
-        </ul>
-      </div>
+      <!-- Your existing content about engines -->
     </section>
 
-    <section id="about">
-      <h2>About Us</h2>
-      <p>EduLearn is dedicated to providing accessible education through digital tools and resources.</p>
+    <section class="quiz" id="quiz-section">
+      <h2>Quiz Time!</h2>
+
+      <div class="quiz-item">
+        <h3>1. Which German engineer invented the first modern automobile?</h3>
+        <button onclick="checkAnswer(this, false)">Nikola Tesla</button>
+        <button onclick="checkAnswer(this, false)">Henry Ford</button>
+        <button onclick="checkAnswer(this, true)">Karl Benz</button>
+        <button onclick="checkAnswer(this, false)">Gottlieb Daimler</button>
+      </div>
+
+      <div class="quiz-item">
+        <h3>2. What is a hatchback commonly known for?</h3>
+        <button onclick="checkAnswer(this, true)">Small size and fuel efficiency</button>
+        <button onclick="checkAnswer(this, false)">Large passenger capacity</button>
+        <button onclick="checkAnswer(this, false)">Off-road capability</button>
+        <button onclick="checkAnswer(this, false)">Luxury features</button>
+      </div>
+
+      <div class="quiz-item">
+        <h3>3. What type of car is designed primarily to carry more people safely?</h3>
+        <button onclick="checkAnswer(this, false)">Sports Car</button>
+        <button onclick="checkAnswer(this, false)">SUV</button>
+        <button onclick="checkAnswer(this, true)">People Carrier</button>
+        <button onclick="checkAnswer(this, false)">Estate</button>
+      </div>
+
+      <!-- New Quiz Questions -->
+      <div class="quiz-item">
+        <h3>4. What year was the Benz Patent-Motorwagen patented?</h3>
+        <button onclick="checkAnswer(this, false)">1875</button>
+        <button onclick="checkAnswer(this, true)">1886</button>
+        <button onclick="checkAnswer(this, false)">1890</button>
+        <button onclick="checkAnswer(this, false)">1901</button>
+      </div>
+
+      <div class="quiz-item">
+        <h3>5. Which car type is known for its practicality in off-road terrain?</h3>
+        <button onclick="checkAnswer(this, false)">Hatchback</button>
+        <button onclick="checkAnswer(this, false)">Saloon</button>
+        <button onclick="checkAnswer(this, true)">4×4</button>
+        <button onclick="checkAnswer(this, false)">People Carrier</button>
+      </div>
+
+      <div class="quiz-item">
+        <h3>6. What is the main advantage of sports cars?</h3>
+        <button onclick="checkAnswer(this, true)">Speed and acceleration</button>
+        <button onclick="checkAnswer(this, false)">Fuel economy</button>
+        <button onclick="checkAnswer(this, false)">Large passenger capacity</button>
+        <button onclick="checkAnswer(this, false)">Off-road capability</button>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>Follow us on:
-      <a href="https://facebook.com" target="_blank">Facebook</a> |
-      <a href="https://youtube.com" target="_blank">YouTube</a> |
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+    <p>© 2025 EduLearn. All rights reserved.</p>
+    <p>Follow us on
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">Instagram</a>
     </p>
-    <p>&copy; 2025 EduLearn. All rights reserved.</p>
   </footer>
+
+  <script>
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.style.backgroundColor = "#4caf50"; // green
+        alert("Correct!");
+      } else {
+        button.style.backgroundColor = "#f44336"; // red
+        alert("Incorrect. Try again!");
+      }
+      // Disable all buttons in this quiz item after answer
+      const buttons = button.parentNode.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+  </script>
 </body>
 </html>
+
 
 
 
