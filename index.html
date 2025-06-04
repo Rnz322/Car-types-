@@ -7,21 +7,20 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: #f4f4f4;
       color: #333;
     }
 
     header {
-      background: linear-gradient(135deg, #004080, #0066cc);
+      background: #004080;
       color: white;
-      padding: 30px 10%;
+      padding: 20px 10%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     nav ul {
@@ -34,52 +33,17 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
-    /* Main Section Style */
     main {
-      padding: 50px 10%;
+      padding: 20px 10%;
       background: white;
     }
 
-    .hero {
-      background: url('car-background.jpg') no-repeat center center/cover;
-      color: white;
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-    }
-
-    .hero button {
-      background-color: #004080;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .hero button:hover {
-      background-color: #0066cc;
-    }
-
-    /* Sections styling */
     section {
       margin-bottom: 40px;
     }
@@ -90,54 +54,70 @@
       margin: 20px 0;
     }
 
-    /* Popup Style */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 30px;
-      border: 1px solid #ccc;
+    .quiz {
+      margin-top: 30px;
+      background-color: #f9f9f9;
+      padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .popup button {
-      background-color: #004080;
+    .quiz h3 {
+      margin-bottom: 10px;
+    }
+
+    .quiz button {
+      background: #004080;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
+      padding: 10px 15px;
+      margin: 5px 0;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      width: 100%;
+      border-radius: 5px;
     }
 
-    .popup button:hover {
-      background-color: #0066cc;
+    .quiz button:hover {
+      background: #0066cc;
     }
 
     footer {
       background: #004080;
       color: white;
       text-align: center;
-      padding: 30px 10%;
+      padding: 20px 10%;
     }
 
     footer a {
       color: #ffcc00;
       text-decoration: none;
-      margin: 0 15px;
-      font-size: 1.1rem;
+      margin: 0 10px;
     }
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    .animated-credit, .animated-tagline {
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, #ff0057, #00d2ff, #ffed00, #00ff90, #ff0057);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: colorFlow 5s linear infinite, floatUpDown 2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes colorFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
   </style>
 </head>
@@ -153,63 +133,68 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section id="home">
       <h1>Welcome to EduLearn</h1>
-      <p>Your gateway to digital learning about cars and their engines!</p>
-      <button onclick="showPopup()">Start Learning</button>
+      <p class="animated-tagline">Your gateway to digital learning!</p>
     </section>
 
-    <section id="home">
+    <section>
       <h2>The Different Car Types & Their Benefits</h2>
-      <p>When it comes to cars, there are a lot out there. Let’s take a look at a few popular types:</p>
+      <p>When it comes to cars, there are a lot out there. When we say a lot, we mean a lot. There is all kind of different shapes, sizes, brands, models, the works...</p>
 
       <h3>Hatchback</h3>
-      <p>Hatchbacks are popular for their practicality and efficiency. Great for city driving!</p>
+      <p>One of the most popular types of car in the UK is the hatchback... Awesome for light use or city life, and they’re cheaper too.</p>
 
       <h3>Saloon</h3>
-      <p>Saloon cars are spacious, fast, and reliable for long-distance driving.</p>
+      <p>Saloons are almost always 5 doors... They’re all fast, reliable and pretty comfortable to drive.</p>
 
       <h3>Estate</h3>
-      <p>Estate cars offer the best of both worlds—extra space and comfort.</p>
+      <p>They’re extended so they have van-like practicality while still having some of the comfort and performance of smaller vehicles.</p>
 
       <h3>SUV</h3>
-      <p>SUVs are versatile and great for families or off-road adventures.</p>
+      <p>SUV stands for Sports Utility Vehicle... Fats and practical, but not always convenient or affordable.</p>
 
       <h3>4×4</h3>
-      <p>4x4 vehicles are built for tougher terrains, offering unmatched off-road capabilities.</p>
+      <p>4x4s are usually bigger, more off-road built cars with sheer practicality in mind... There’s a big difference.</p>
 
       <h3>People Carrier</h3>
-      <p>These cars are ideal for large families or groups, offering space and safety.</p>
+      <p>Built to carry more people than normal without compromising safety... but they definitely do the job.</p>
 
       <h3>Sports</h3>
-      <p>Sports cars are all about speed and performance, perfect for thrill-seekers!</p>
+      <p>These are usually expensive and entirely built for acceleration and speed... but they can move. That’s what they’re for.</p>
     </section>
 
     <section id="lessons">
       <h2>Types of Car Engines and How They Work</h2>
-      <p>In this lesson, we’ll cover the basics of different car engines:</p>
-      <ul>
-        <li>Inline Engines</li>
-        <li>V-type Engines</li>
-        <li>Rotary Engines</li>
-        <li>Electric Motors</li>
-      </ul>
-      <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" allowfullscreen></iframe>
+      <p>In this lesson, you'll learn about different types of car engines such as inline, V-type, rotary, and electric motors...</p>
+
+      <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
+
+      <div class="quiz">
+        <h3>Quick Quiz</h3>
+        <p>Which engine type is known for its compact design and high power output?</p>
+        <ul>
+          <li><button>A. Inline</button></li>
+          <li><button>B. Rotary</button></li>
+          <li><button>C. V-type</button></li>
+          <li><button>D. Electric</button></li>
+        </ul>
+        <p>What is a key advantage of electric motors over traditional combustion engines?</p>
+        <ul>
+          <li><button>A. Louder sound</button></li>
+          <li><button>B. Requires more fuel</button></li>
+          <li><button>C. Instant torque</button></li>
+          <li><button>D. Complex transmission</button></li>
+        </ul>
+      </div>
     </section>
 
     <section id="about">
       <h2>About Us</h2>
-      <p>EduLearn is dedicated to providing accessible education through digital tools and resources. Our aim is to make learning fun and interactive for everyone!</p>
+      <p>EduLearn is dedicated to providing accessible education through digital tools and resources.</p>
     </section>
   </main>
-
-  <!-- Popup Window -->
-  <div class="popup" id="popup">
-    <h2>Welcome to the Learning Platform!</h2>
-    <p>We’re excited to have you start your learning journey with us. Let's dive in!</p>
-    <button onclick="closePopup()">Close</button>
-  </div>
 
   <footer>
     <p>Follow us on:
@@ -219,20 +204,9 @@
     </p>
     <p>&copy; 2025 EduLearn. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Function to show the popup
-    function showPopup() {
-      document.getElementById("popup").style.display = "block";
-    }
-
-    // Function to close the popup
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-    }
-  </script>
 </body>
 </html>
+
 
 
 
