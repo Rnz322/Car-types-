@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Different Types of Car and Their Uses</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f4f4f4;
@@ -20,17 +19,14 @@
       color: white;
       padding: 20px 10%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      justify-content: space-between;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 20px;
     }
 
     nav a {
@@ -40,69 +36,23 @@
     }
 
     nav a:hover {
-      color: #ffcc00;
       text-decoration: underline;
     }
 
-    .hero {
-      background-image: url('hero-image.jpg'); /* replace with your image */
-      background-size: cover;
-      color: white;
-      padding: 100px 10%;
-      text-align: center;
-      background-position: center;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .cta-btn {
-      background-color: #ffcc00;
-      color: black;
-      padding: 15px 25px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .cta-btn:hover {
-      background-color: #00d2ff;
-    }
-
     main {
-      padding: 20px 10%;
+      padding: 40px 10%;
       background: white;
+      min-height: 100vh; /* Ensures the content takes up the full screen */
     }
 
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #004080;
-      text-align: center;
+    section {
       margin-bottom: 40px;
     }
 
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .car-type {
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .car-type:hover {
-      transform: scale(1.05);
-    }
-
-    .car-type h3 {
-      color: #004080;
+    iframe {
+      width: 100%;
+      height: 315px;
+      margin: 20px 0;
     }
 
     .quiz {
@@ -126,7 +76,6 @@
       cursor: pointer;
       width: 100%;
       border-radius: 5px;
-      transition: background-color 0.3s ease;
     }
 
     .quiz button:hover {
@@ -137,18 +86,16 @@
       background: #004080;
       color: white;
       text-align: center;
-      padding: 40px 10%;
+      padding: 20px 10%;
     }
 
     footer a {
       color: #ffcc00;
       text-decoration: none;
       margin: 0 10px;
-      font-weight: bold;
     }
 
     footer a:hover {
-      color: #00d2ff;
       text-decoration: underline;
     }
 
@@ -174,31 +121,21 @@
       50% { transform: translateY(-5px); }
     }
 
-    @media (max-width: 768px) {
-      .cta-btn {
-        width: 100%;
-        padding: 15px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      main {
-        padding: 20px;
-      }
+    /* Ensures sections and quiz content are spaced properly */
+    section h2 {
+      font-size: 2rem;
+      color: #004080;
     }
+
+    section p, section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    
   </style>
 </head>
 <body>
   <header>
-    <div><h1>EduLearn</h1></div>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -208,48 +145,56 @@
     </nav>
   </header>
 
-  <div class="hero">
-    <h1>Welcome to EduLearn</h1>
-    <p class="animated-tagline">Your gateway to digital learning!</p>
-    <a href="#lessons" class="cta-btn">Start Learning Now</a>
-  </div>
-
   <main>
     <section id="home">
-      <h2 class="section-title">The Different Car Types & Their Benefits</h2>
-      <div class="car-type">
-        <h3>Hatchback</h3>
-        <p>One of the most popular types of car in the UK is the hatchback... Awesome for light use or city life, and they’re cheaper too.</p>
-      </div>
+      <h1>Welcome to EduLearn</h1>
+      <p class="animated-tagline">Your gateway to digital learning!</p>
+    </section>
 
-      <div class="car-type">
-        <h3>Saloon</h3>
-        <p>Saloons are almost always 5 doors... They’re all fast, reliable and pretty comfortable to drive.</p>
-      </div>
+    <section>
+      <h2>The Different Car Types & Their Benefits</h2>
+      <p>When it comes to cars, there are a lot out there. When we say a lot, we mean a lot. There is all kind of different shapes, sizes, brands, models, the works...</p>
 
-      <div class="car-type">
-        <h3>Estate</h3>
-        <p>They’re extended so they have van-like practicality while still having some of the comfort and performance of smaller vehicles.</p>
-      </div>
+      <h3>Hatchback</h3>
+      <p>One of the most popular types of car in the UK is the hatchback... Awesome for light use or city life, and they’re cheaper too.</p>
 
-      <div class="car-type">
-        <h3>SUV</h3>
-        <p>SUV stands for Sports Utility Vehicle... Fast and practical, but not always convenient or affordable.</p>
-      </div>
+      <h3>Saloon</h3>
+      <p>Saloons are almost always 5 doors... They’re all fast, reliable and pretty comfortable to drive.</p>
 
-      <div class="car-type">
-        <h3>4×4</h3>
-        <p>4x4s are usually bigger, more off-road built cars with sheer practicality in mind... There’s a big difference.</p>
-      </div>
+      <h3>Estate</h3>
+      <p>They’re extended so they have van-like practicality while still having some of the comfort and performance of smaller vehicles.</p>
 
-      <div class="car-type">
-        <h3>People Carrier</h3>
-        <p>Built to carry more people than normal without compromising safety... but they definitely do the job.</p>
-      </div>
+      <h3>SUV</h3>
+      <p>SUV stands for Sports Utility Vehicle... Fats and practical, but not always convenient or affordable.</p>
 
-      <div class="car-type">
-        <h3>Sports</h3>
-        <p>These are usually expensive and entirely built for accelerati
+      <h3>4×4</h3>
+      <p>4x4s are usually bigger, more off-road built cars with sheer practicality in mind... There’s a big difference.</p>
+
+      <h3>People Carrier</h3>
+      <p>Built to carry more people than normal without compromising safety... but they definitely do the job.</p>
+
+      <h3>Sports</h3>
+      <p>These are usually expensive and entirely built for acceleration and speed... but they can move. That’s what they’re for.</p>
+    </section>
+
+    <section id="lessons">
+      <h2>Types of Car Engines and How They Work</h2>
+      <p>In this lesson, you'll learn about different types of car engines such as inline, V-type, rotary, and electric motors...</p>
+
+      <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
+      <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
+
+      <div class="quiz">
+        <h3>Quick Quiz</h3>
+        <p>Which engine type is known for its compact design and high power output?</p>
+        <ul>
+          <li><button>A. Inline</button></li>
+          <li><button>B. Rotary</button></li>
+          <li><button>C. V-type</button></li>
+          <li><button>D. Electric</button></li>
+        </ul>
+        <p>What is a key advantage of elec
+
 
 
 
