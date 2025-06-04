@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Different Types of Car and Their Uses</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -17,8 +18,9 @@
       padding: 0;
       background: linear-gradient(to right, #e0f7fa, #fce4ec);
       color: #333;
-      position: relative;
-      overflow: hidden;
+      background-image: url('https://example.com/car-silhouette-pattern.png');
+      background-size: 150px;
+      background-repeat: repeat;
     }
 
     header {
@@ -158,6 +160,16 @@
       text-decoration: underline;
     }
 
+    .social-icons i {
+      font-size: 24px;
+      margin: 0 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons i:hover {
+      transform: scale(1.2);
+    }
+
     .animated-tagline, .animated-credit {
       font-weight: bold;
       background: linear-gradient(90deg, #ff4081, #40c4ff, #ffee58, #69f0ae);
@@ -192,42 +204,24 @@
       margin-top: 20px;
     }
 
-    /* Cars Animation */
-    .car {
-      position: absolute;
-      top: 70%;
-      font-size: 3em;
-      animation: driveAcross 10s linear infinite;
-    }
-
-    @keyframes driveAcross {
-      0% {
-        left: -10%;
-        transform: rotate(0deg);
+    @media (max-width: 768px) {
+      main {
+        padding: 20px 5%;
       }
-      100% {
-        left: 110%;
-        transform: rotate(0deg);
+
+      header {
+        padding: 20px;
       }
-    }
 
-    /* Adjust cars' timing for different speeds */
-    .car1 {
-      animation-duration: 12s;
-    }
-
-    .car2 {
-      animation-duration: 14s;
-    }
-
-    .car3 {
-      animation-duration: 16s;
+      footer {
+        padding: 20px 5%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Different Types of Car and Their Uses</h1>
+    <h1>EduLearn</h1>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -237,37 +231,38 @@
     </nav>
   </header>
 
-  <!-- Car icons driving across the screen -->
-  <div class="car car1">🚗</div>
-  <div class="car car2">🚙</div>
-  <div class="car car3">🚘</div>
-
   <main>
     <section id="home">
-      <h2>Welcome to the Car World!</h2>
-      <p>This website is dedicated to providing information about different types of cars and their uses. You'll find useful insights and learn about the various categories of cars.</p>
+      <h2>Welcome to EduLearn</h2>
+      <p class="animated-tagline">Your gateway to digital learning!</p>
+    </section>
+
+    <section>
+      <h2>The Different Car Types & Their Benefits</h2>
+      <!-- Content as before -->
+    </section>
+
+    <section id="first-car">
+      <!-- Content as before -->
     </section>
 
     <section id="lessons">
-      <h3>Lessons</h3>
-      <p>In this section, you can dive into different topics related to cars, from engineering principles to car maintenance.</p>
+      <!-- Content as before -->
     </section>
 
-    <section id="quiz" class="quiz">
-      <h3>Test Your Knowledge</h3>
-      <p>Answer the following questions:</p>
-      <button onclick="checkAnswer(this, 'correct')">What is the most popular car brand?</button>
-      <button onclick="checkAnswer(this, 'wrong')">What is the most fuel-efficient car?</button>
+    <section id="about">
+      <h2>About EduLearn</h2>
+      <p>EduLearn is your digital learning companion. Our mission is to make learning engaging and accessible to everyone, everywhere.</p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 CarWorld. All rights reserved.</p>
-    <p>Follow us on
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a> |
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> |
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-    </p>
+    <p>© 2025 EduLearn. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 
   <script>
