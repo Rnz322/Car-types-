@@ -189,6 +189,7 @@
       animation: fadeInText 2s ease forwards;
       margin-top: 20px;
     }
+
   </style>
 </head>
 <body>
@@ -236,14 +237,13 @@
       <p>These are usually expensive and entirely built for acceleration and speed. They power through fuel, may not be large or comfortable, but they can move. That’s what they’re for, and they’re a lot of fun.</p>
     </section>
 
-    <section id="first-car">
-      <p class="animated-tagline" style="font-size: 1.1em; margin-bottom: 10px;">
-        This is the picture of the first car invented
+    <section id="comparison">
+      <h2>Comparing Modern Vehicles to 1990s Models</h2>
+      <p class="animated-text">
+        Modern cars offer advanced safety features, better fuel efficiency (including hybrids and electric options), and high-tech comforts like GPS and driver-assist systems. However, they are more expensive to buy and maintain, with complex electronics that can be costly to repair.
       </p>
-      <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/55eb7115249b9558633ae377d7b003dd3aee1a47/1st.jpg" alt="Benz Patent-Motorwagen - First Car" style="max-width: 400px; width: 100%; height: auto; display: block; margin-bottom: 20px;" />
-      <h2>Who invented the first car?</h2>
-      <p>
-        The first modern automobile was invented by German engineer Karl Benz in 1885. Known as the Benz Patent-Motorwagen, it was the world’s first car powered by a gasoline-powered internal combustion engine. Benz was granted a patent for his invention in 1886, marking the official birth of the automobile. In 1888, his wife Bertha Benz undertook the first long-distance journey in the vehicle, demonstrating its practicality and helping to spark public interest. While earlier steam-powered vehicles had been developed, Benz’s design is widely regarded as the first true car due to its innovative engine and practical usability.
+      <p class="animated-text" style="animation-delay: 0.5s;">
+        Cars from the 1990s were simpler, cheaper to fix, and had a more “hands-on” driving feel. But they lacked many safety and tech features, were less fuel-efficient, and produced more emissions.
       </p>
     </section>
 
@@ -259,92 +259,51 @@
         Understanding Mechanics: Knowledge of how engines work helps you understand the mechanical systems in vehicles. This can improve your ability to diagnose problems and perform basic repairs.
       </p>
 
-      <div class="quiz" id="quiz-section">
-        <h3>Quiz Time!</h3>
-
-        <div class="quiz-item">
-          <h3>1. Which German engineer invented the first modern automobile?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Karl Benz</button>
-          <button onclick="checkAnswer(this, 'wrong')">Gottlieb Daimler</button>
-          <button onclick="checkAnswer(this, 'wrong')">Henry Ford</button>
-          <button onclick="checkAnswer(this, 'wrong')">Nikolaus Otto</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>2. What type of engine powered the first modern automobile?</h3>
-          <button onclick="checkAnswer(this, 'wrong')">Steam-powered engine</button>
-          <button onclick="checkAnswer(this, 'correct')">Gasoline-powered internal combustion engine</button>
-          <button onclick="checkAnswer(this, 'wrong')">Electric engine</button>
-          <button onclick="checkAnswer(this, 'wrong')">Diesel engine</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>3. What was the significance of Bertha Benz's long-distance journey in 1888?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Demonstrated the car's practicality and sparked public interest</button>
-          <button onclick="checkAnswer(this, 'wrong')">Invented the first car engine</button>
-          <button onclick="checkAnswer(this, 'wrong')">Won the first car race</button>
-          <button onclick="checkAnswer(this, 'wrong')">Designed the car's interior</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>4. Which type of car is known for being small, economical, and practical for city driving?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Hatchback</button>
-          <button onclick="checkAnswer(this, 'wrong')">SUV</button>
-          <button onclick="checkAnswer(this, 'wrong')">Sports Car</button>
-          <button onclick="checkAnswer(this, 'wrong')">People Carrier</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>5. What does SUV stand for?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Sports Utility Vehicle</button>
-          <button onclick="checkAnswer(this, 'wrong')">Small Utility Van</button>
-          <button onclick="checkAnswer(this, 'wrong')">Super Urban Vehicle</button>
-          <button onclick="checkAnswer(this, 'wrong')">Standard Utility Vehicle</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>6. What is the main purpose of a People Carrier?</h3>
-          <button onclick="checkAnswer(this, 'correct')">To carry more people safely</button>
-          <button onclick="checkAnswer(this, 'wrong')">To be the fastest car</button>
-          <button onclick="checkAnswer(this, 'wrong')">To be the smallest vehicle</button>
-          <button onclick="checkAnswer(this, 'wrong')">To carry heavy cargo</button>
-        </div>
-
+      <div class="quiz">
+        <h3>Quick Quiz</h3>
+        <p>Which engine type is known for its compact design and high power output?</p>
+        <ul>
+          <li><button>A. Inline</button></li>
+          <li><button>B. Rotary</button></li>
+          <li><button>C. V-type</button></li>
+          <li><button>D. Electric</button></li>
+        </ul>
+        <p>What is a key advantage of electric motors over traditional combustion engines?</p>
+        <ul>
+          <li><button>A. Louder sound</button></li>
+          <li><button>B. Requires more fuel</button></li>
+          <li><button>C. Instant torque</button></li>
+          <li><button>D. Complex transmission</button></li>
+        </ul>
+        <p>Which decade’s cars are generally simpler and cheaper to repair?</p>
+        <ul>
+          <li><button>A. 2020s</button></li>
+          <li><button>B. 1980s</button></li>
+          <li><button>C. 1990s</button></li>
+          <li><button>D. 1970s</button></li>
+        </ul>
+        <p>What is a major disadvantage of modern cars?</p>
+        <ul>
+          <li><button>A. Advanced safety features</button></li>
+          <li><button>B. More expensive to buy and maintain</button></li>
+          <li><button>C. Cheaper repairs</button></li>
+          <li><button>D. Lack of technology</button></li>
+        </ul>
       </div>
     </section>
 
     <section id="about">
-      <h2>About EduLearn</h2>
-      <p>EduLearn is your digital learning companion. Our mission is to make learning engaging and accessible to everyone, everywhere.</p>
+      <h2>About Us</h2>
+      <p>We are EduLearn, passionate about making digital education accessible and engaging for everyone.</p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 EduLearn. All rights reserved.</p>
-    <p>Follow us on
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a> |
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> |
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-    </p>
+    <p>© 2025 EduLearn. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
   </footer>
-
-  <script>
-    function checkAnswer(button, correctness) {
-      if (correctness === 'correct') {
-        button.style.backgroundColor = '#4caf50'; // Green
-        alert('Correct!');
-      } else {
-        button.style.backgroundColor = '#f44336'; // Red
-        alert('Wrong answer, try again!');
-      }
-      // Disable all buttons in the same quiz-item after one is clicked
-      const quizItem = button.parentNode;
-      const buttons = quizItem.querySelectorAll('button');
-      buttons.forEach(btn => btn.disabled = true);
-    }
-  </script>
 </body>
 </html>
+
 
 
 
