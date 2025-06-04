@@ -44,7 +44,7 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
     }
 
     nav a:hover, nav a.active {
@@ -239,6 +239,26 @@
         background-position: 100% 100%;
       }
     }
+
+    /* Hover effect for links */
+    nav a:hover, nav a.active {
+      text-decoration: underline;
+      color: #ffeb3b;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    /* Hover effect for buttons */
+    .quiz button:hover {
+      background: #004d40;
+      transform: scale(1.05);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Hover effect for images */
+    img:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
   </style>
 </head>
 <body>
@@ -325,6 +345,7 @@
   </script>
 </body>
 </html>
+
 
 
 
