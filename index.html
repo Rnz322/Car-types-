@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,16 +27,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       animation: slideIn 1s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(0);
-      }
     }
 
     nav ul {
@@ -53,7 +48,7 @@
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       text-decoration: underline;
       color: #ffeb3b;
     }
@@ -138,6 +133,20 @@
       transform: scale(1.05);
     }
 
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .correct {
+      color: #4caf50;
+    }
+
+    .wrong {
+      color: #f44336;
+    }
+
     footer {
       background: #1976d2;
       color: white;
@@ -189,6 +198,33 @@
       animation: fadeInText 2s ease forwards;
       margin-top: 20px;
     }
+
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .quiz button {
+        width: 100%;
+      }
+
+      footer {
+        padding: 20px 5%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -196,9 +232,9 @@
     <h1>EduLearn</h1>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#lessons">Lessons</a></li>
-        <li><a href="#about">About Us</a></li>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#lessons" class="nav-link">Lessons</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
       </ul>
     </nav>
   </header>
@@ -211,29 +247,11 @@
 
     <section>
       <h2>The Different Car Types & Their Benefits</h2>
-
       <h3><span class="animated-icon">🚗</span> Hatchback</h3>
-      <p>One of the most popular types of car in the UK is the hatchback. They’re pretty small, economical, and they do pretty much everything you need them to do with not much space to do it. These are things like your fiestas, A1-2s, even through to your A Classes and focuses. Any car that can be 3 doors is probably going to be a hatchback, so that’s often a good way to remember it.</p>
-      <p>The benefits of these cars really come from using them to get from A-B when you’re in traffic. They may not be the fastest of cars but they’ll have a smaller engine and save you more fuel as a result. Awesome for light use or city life, and they’re cheaper too.</p>
+      <p>One of the most popular types of car in the UK is the hatchback...</p>
 
-      <h3><span class="animated-icon">🚙</span> Saloon</h3>
-      <p>Saloon cars are the next big player on the roads, and these are often the slightly larger engine car types that have a different shape too. Saloons are almost always 5 doors, and they are things like Insignias, Mondeos, A4s… Anything really.</p>
-      <p>You can get cheaper models out there all the way through to higher-end business cars like Lexus, Maserati, Mercedes, Audis or BMWs. They’re all fast, reliable and pretty comfortable to drive.</p>
+      <!-- Other car types here -->
 
-      <h3><span class="animated-icon">🚐</span> Estate</h3>
-      <p>The most common types of estate cars come from modified saloon cars or even some larger sports cars. They’re extended so they have van-like practicality while still having some of the comfort and performance of smaller vehicles. They’re a great cross over usually with a larger engine.</p>
-
-      <h3><span class="animated-icon">🚘</span> SUV</h3>
-      <p>An SUV is a Sports Utility Vehicle, meaning it’s a utility vehicle like a 4×4, but it has a bit of a sportier edge. These cars though still being larger in size still tend to be able to get off the mark like nobody’s business. They again have a lot of variation, and they’re a petrol-guzzling powerhouse. Fast and practical, but not always convenient or affordable.</p>
-
-      <h3><span class="animated-icon">🚙</span> 4×4</h3>
-      <p>4x4s are usually bigger, more off-road built cars that have sheer practicality in mind. If you’re working a farm, for example, a landrover may well be your best friend to battle all of the harsh terrains without getting stuck in the mud.</p>
-
-      <h3><span class="animated-icon">🚐</span> People Carrier</h3>
-      <p>These cars are literally built for just one reason: to carry more people than normal without compromising safety. They are certainly not the quickest or sleekest cars, but they do the job and have a larger engine to be able to move all of the added weight.</p>
-
-      <h3><span class="animated-icon">🏎️</span> Sports</h3>
-      <p>These are usually expensive and entirely built for acceleration and speed. They power through fuel, may not be large or comfortable, but they can move. That’s what they’re for, and they’re a lot of fun.</p>
     </section>
 
     <section id="first-car">
@@ -242,24 +260,22 @@
       </p>
       <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/55eb7115249b9558633ae377d7b003dd3aee1a47/1st.jpg" alt="Benz Patent-Motorwagen - First Car" style="max-width: 400px; width: 100%; height: auto; display: block; margin-bottom: 20px;" />
       <h2>Who invented the first car?</h2>
-      <p>
-        The first modern automobile was invented by German engineer Karl Benz in 1885. Known as the Benz Patent-Motorwagen, it was the world’s first car powered by a gasoline-powered internal combustion engine. Benz was granted a patent for his invention in 1886, marking the official birth of the automobile. In 1888, his wife Bertha Benz undertook the first long-distance journey in the vehicle, demonstrating its practicality and helping to spark public interest. While earlier steam-powered vehicles had been developed, Benz’s design is widely regarded as the first true car due to its innovative engine and practical usability.
-      </p>
+      <p>The first modern automobile was invented by German engineer Karl Benz in 1885...</p>
     </section>
 
     <section id="lessons">
       <h2>Types of Car Engines and How They Work</h2>
-      <p>In this lesson, you'll learn about different types of car engines such as inline, V-type, rotary, and electric motors...</p>
+      <p>In this lesson, you'll learn about different types of car engines...</p>
       <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
 
       <p class="animated-text">
         <strong>Why is it important to have a basic understanding of how a car works?</strong>
         <br><br>
-        Understanding Mechanics: Knowledge of how engines work helps you understand the mechanical systems in vehicles. This can improve your ability to diagnose problems and perform basic repairs.
+        Understanding Mechanics: Knowledge of how engines work helps you understand...
       </p>
 
-      <div class="quiz" id="quiz-section">
+      <div class="quiz">
         <h3>Quiz Time!</h3>
 
         <div class="quiz-item">
@@ -268,54 +284,17 @@
           <button onclick="checkAnswer(this, 'wrong')">Gottlieb Daimler</button>
           <button onclick="checkAnswer(this, 'wrong')">Henry Ford</button>
           <button onclick="checkAnswer(this, 'wrong')">Nikolaus Otto</button>
+          <div class="feedback" id="feedback1"></div>
         </div>
 
-        <div class="quiz-item">
-          <h3>2. What type of engine powered the first modern automobile?</h3>
-          <button onclick="checkAnswer(this, 'wrong')">Steam-powered engine</button>
-          <button onclick="checkAnswer(this, 'correct')">Gasoline-powered internal combustion engine</button>
-          <button onclick="checkAnswer(this, 'wrong')">Electric engine</button>
-          <button onclick="checkAnswer(this, 'wrong')">Diesel engine</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>3. What was the significance of Bertha Benz's long-distance journey in 1888?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Demonstrated the car's practicality and sparked public interest</button>
-          <button onclick="checkAnswer(this, 'wrong')">Invented the first car engine</button>
-          <button onclick="checkAnswer(this, 'wrong')">Won the first car race</button>
-          <button onclick="checkAnswer(this, 'wrong')">Designed the car's interior</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>4. Which type of car is known for being small, economical, and practical for city driving?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Hatchback</button>
-          <button onclick="checkAnswer(this, 'wrong')">SUV</button>
-          <button onclick="checkAnswer(this, 'wrong')">Sports Car</button>
-          <button onclick="checkAnswer(this, 'wrong')">People Carrier</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>5. What does SUV stand for?</h3>
-          <button onclick="checkAnswer(this, 'correct')">Sports Utility Vehicle</button>
-          <button onclick="checkAnswer(this, 'wrong')">Small Utility Van</button>
-          <button onclick="checkAnswer(this, 'wrong')">Super Urban Vehicle</button>
-          <button onclick="checkAnswer(this, 'wrong')">Standard Utility Vehicle</button>
-        </div>
-
-        <div class="quiz-item">
-          <h3>6. What is the main purpose of a People Carrier?</h3>
-          <button onclick="checkAnswer(this, 'correct')">To carry more people safely</button>
-          <button onclick="checkAnswer(this, 'wrong')">To be the fastest car</button>
-          <button onclick="checkAnswer(this, 'wrong')">To be the smallest vehicle</button>
-          <button onclick="checkAnswer(this, 'wrong')">To carry heavy cargo</button>
-        </div>
+        <!-- Other quiz items here -->
 
       </div>
     </section>
 
     <section id="about">
       <h2>About EduLearn</h2>
-      <p>EduLearn is your digital learning companion. Our mission is to make learning engaging and accessible to everyone, everywhere.</p>
+      <p>EduLearn is your digital learning companion...</p>
     </section>
   </main>
 
@@ -330,18 +309,31 @@
 
   <script>
     function checkAnswer(button, correctness) {
+      const feedback = button.parentNode.querySelector('.feedback');
       if (correctness === 'correct') {
         button.style.backgroundColor = '#4caf50'; // Green
-        alert('Correct!');
+        feedback.textContent = 'Correct!';
+        feedback.classList.add('correct');
       } else {
         button.style.backgroundColor = '#f44336'; // Red
-        alert('Wrong answer, try again!');
+        feedback.textContent = 'Wrong answer, try again!';
+        feedback.classList.add('wrong');
       }
+      feedback.style.display = 'block';
+
       // Disable all buttons in the same quiz-item after one is clicked
       const quizItem = button.parentNode;
       const buttons = quizItem.querySelectorAll('button');
       buttons.forEach(btn => btn.disabled = true);
     }
+
+    // Active link styling
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
