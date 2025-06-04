@@ -121,6 +121,16 @@
       margin-bottom: 10px;
     }
 
+    .quiz ul {
+      padding-left: 20px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .quiz li {
+      margin-bottom: 8px;
+    }
+
     .quiz button {
       background: #00796b;
       color: white;
@@ -190,6 +200,13 @@
       margin-top: 20px;
     }
 
+    /* Specific animation for the Karl Benz section */
+    #inventor-section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.3s;
+    }
   </style>
 </head>
 <body>
@@ -237,10 +254,10 @@
       <p>These are usually expensive and entirely built for acceleration and speed. They power through fuel, may not be large or comfortable, but they can move. That’s what they’re for, and they’re a lot of fun.</p>
     </section>
 
-    <!-- NEW SECTION INSERTED HERE -->
-    <section>
-      <h2><span class="animated-icon">🛠️</span> Who Invented the First Car?</h2>
-      <p class="animated-text">
+    <!-- New Section: Who invented the first car? -->
+    <section id="inventor-section">
+      <h2>Who invented the first car?</h2>
+      <p>
         The first modern automobile was invented by German engineer Karl Benz in 1885. Known as the Benz Patent-Motorwagen, it was the world’s first car powered by a gasoline-powered internal combustion engine. Benz was granted a patent for his invention in 1886, marking the official birth of the automobile. In 1888, his wife Bertha Benz undertook the first long-distance journey in the vehicle, demonstrating its practicality and helping to spark public interest. While earlier steam-powered vehicles had been developed, Benz’s design is widely regarded as the first true car due to its innovative engine and practical usability.
       </p>
     </section>
@@ -273,6 +290,33 @@
           <li><button>C. Instant torque</button></li>
           <li><button>D. Complex transmission</button></li>
         </ul>
+
+        <!-- New Quizzes -->
+        <h3>Additional Quizzes</h3>
+
+        <p>What year did Karl Benz receive a patent for his invention of the automobile?</p>
+        <ul>
+          <li><button>A. 1875</button></li>
+          <li><button>B. 1886</button></li>
+          <li><button>C. 1890</button></li>
+          <li><button>D. 1901</button></li>
+        </ul>
+
+        <p>Who was the first person to take a long-distance trip in the Benz Patent-Motorwagen?</p>
+        <ul>
+          <li><button>A. Karl Benz</button></li>
+          <li><button>B. Bertha Benz</button></li>
+          <li><button>C. Henry Ford</button></li>
+          <li><button>D. Nikolaus Otto</button></li>
+        </ul>
+
+        <p>Why is Karl Benz’s car considered the first true automobile?</p>
+        <ul>
+          <li><button>A. It used a steam engine</button></li>
+          <li><button>B. It was electric powered</button></li>
+          <li><button>C. It had an innovative gasoline-powered internal combustion engine</button></li>
+          <li><button>D. It was made in America</button></li>
+        </ul>
       </div>
     </section>
 
@@ -292,6 +336,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
