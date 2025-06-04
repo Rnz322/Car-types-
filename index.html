@@ -44,7 +44,7 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s ease, text-decoration 0.3s ease;
+      transition: color 0.3s ease;
     }
 
     nav a:hover, nav a.active {
@@ -240,24 +240,23 @@
       }
     }
 
-    /* Hover effect for links */
-    nav a:hover, nav a.active {
-      text-decoration: underline;
-      color: #ffeb3b;
-      transition: color 0.3s ease, text-decoration 0.3s ease;
+    /* Quiz Link Button */
+    .quiz-button {
+      display: inline-block;
+      background-color: #00796b;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    /* Hover effect for buttons */
-    .quiz button:hover {
-      background: #004d40;
+    .quiz-button:hover {
+      background-color: #004d40;
       transform: scale(1.05);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    /* Hover effect for images */
-    img:hover {
-      transform: scale(1.1);
-      transition: transform 0.3s ease;
     }
   </style>
 </head>
@@ -321,30 +320,26 @@
 
     <section id="about">
       <h2>About EduLearn</h2>
-      <p>EduLearn is your digital learning companion, bringing educational resources right to your fingertips. Whether you're a student or a car enthusiast, our platform offers valuable insights and lessons on a variety of topics, including automotive technology and more!</p>
+      <p>EduLearn is dedicated to providing high-quality education to students across the globe. Our mission is to make learning accessible and fun through interactive lessons and quizzes.</p>
+    </section>
+
+    <section id="quiz-link">
+      <h2>Interactive Car Knowledge Quiz</h2>
+      <p>Want to test what you've learned? Take our interactive quiz now!</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform?usp=sharing&ouid=109538757198443097662" target="_blank" rel="noopener noreferrer" class="quiz-button">Start Quiz</a>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 EduLearn. All rights reserved.</p>
-    <p>Follow us on
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a> |
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> |
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <p>Made with ❤️ by EduLearn | &copy; 2025</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a>
     </p>
   </footer>
-
-  <script>
-    // Active link styling
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function() {
-        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
+
 
 
 
