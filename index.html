@@ -26,6 +26,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
     }
 
     nav ul {
@@ -40,10 +50,12 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       text-decoration: underline;
+      color: #ffeb3b;
     }
 
     main {
@@ -78,11 +90,24 @@
 
     h1, h2 {
       color: #00796b;
+      animation: fadeInText 1s ease-out;
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h3 {
       color: #c2185b;
       margin-top: 20px;
+      animation: fadeInText 1s ease-out;
     }
 
     .quiz {
@@ -105,10 +130,12 @@
       cursor: pointer;
       width: 100%;
       border-radius: 6px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .quiz button:hover {
       background: #004d40;
+      transform: scale(1.05);
     }
 
     footer {
@@ -116,6 +143,7 @@
       color: white;
       text-align: center;
       padding: 20px 10%;
+      animation: fadeIn 1s ease forwards;
     }
 
     footer a {
@@ -142,6 +170,16 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    .animated-icon {
+      font-size: 24px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .animated-icon:hover {
+      transform: scale(1.2);
+    }
   </style>
 </head>
 <body>
@@ -165,27 +203,27 @@
     <section>
       <h2>The Different Car Types & Their Benefits</h2>
 
-      <h3>Hatchback</h3>
+      <h3><span class="animated-icon">🚗</span> Hatchback</h3>
       <p>One of the most popular types of car in the UK is the hatchback. They’re pretty small, economical, and they do pretty much everything you need them to do with not much space to do it. These are things like your fiestas, A1-2s, even through to your A Classes and focuses. Any car that can be 3 doors is probably going to be a hatchback, so that’s often a good way to remember it.</p>
       <p>The benefits of these cars really come from using them to get from A-B when you’re in traffic. They may not be the fastest of cars but they’ll have a smaller engine and save you more fuel as a result. Awesome for light use or city life, and they’re cheaper too.</p>
 
-      <h3>Saloon</h3>
+      <h3><span class="animated-icon">🚙</span> Saloon</h3>
       <p>Saloon cars are the next big player on the roads, and these are often the slightly larger engine car types that have a different shape too. Saloons are almost always 5 doors, and they are things like Insignias, Mondeos, A4s… Anything really.</p>
       <p>You can get cheaper models out there all the way through to higher-end business cars like Lexus, Maserati, Mercedes, Audis or BMWs. They’re all fast, reliable and pretty comfortable to drive.</p>
 
-      <h3>Estate</h3>
+      <h3><span class="animated-icon">🚐</span> Estate</h3>
       <p>The most common types of estate cars come from modified saloon cars or even some larger sports cars. They’re extended so they have van-like practicality while still having some of the comfort and performance of smaller vehicles. They’re a great cross over usually with a larger engine.</p>
 
-      <h3>SUV</h3>
+      <h3><span class="animated-icon">🚘</span> SUV</h3>
       <p>An SUV is a Sports Utility Vehicle, meaning it’s a utility vehicle like a 4×4, but it has a bit of a sportier edge. These cars though still being larger in size still tend to be able to get off the mark like nobody’s business. They again have a lot of variation, and they’re a petrol-guzzling powerhouse. Fast and practical, but not always convenient or affordable.</p>
 
-      <h3>4×4</h3>
+      <h3><span class="animated-icon">🚙</span> 4×4</h3>
       <p>4x4s are usually bigger, more off-road built cars that have sheer practicality in mind. If you’re working a farm, for example, a landrover may well be your best friend to battle all of the harsh terrains without getting stuck in the mud.</p>
 
-      <h3>People Carrier</h3>
+      <h3><span class="animated-icon">🚐</span> People Carrier</h3>
       <p>These cars are literally built for just one reason: to carry more people than normal without compromising safety. They are certainly not the quickest or sleekest cars, but they do the job and have a larger engine to be able to move all of the added weight.</p>
 
-      <h3>Sports</h3>
+      <h3><span class="animated-icon">🏎️</span> Sports</h3>
       <p>These are usually expensive and entirely built for acceleration and speed. They power through fuel, may not be large or comfortable, but they can move. That’s what they’re for, and they’re a lot of fun.</p>
     </section>
 
@@ -230,6 +268,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
