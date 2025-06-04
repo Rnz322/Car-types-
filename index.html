@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -27,8 +27,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #fff;
       z-index: -1;
+      pointer-events: none;
     }
 
     /* Particle animation */
@@ -42,15 +42,8 @@
       position: absolute;
       background-color: rgba(255, 255, 255, 0.8);
       border-radius: 50%;
-      opacity: 0;
+      opacity: 0.5;
       animation: particleAnim 1s infinite;
-    }
-
-    .particle-background .particle {
-      width: 10px;
-      height: 10px;
-      animation-duration: random(2s, 5s);
-      animation-delay: random(0s, 2s);
     }
 
     /* Original styles (unchanged) */
@@ -262,14 +255,11 @@
         padding: 20px 5%;
       }
     }
-
   </style>
 </head>
 <body>
   <!-- Particle Background -->
-  <div class="particle-background">
-    <!-- Particles will be dynamically added here -->
-  </div>
+  <div class="particle-background" id="particles"></div>
 
   <header>
     <h1>EduLearn</h1>
@@ -397,9 +387,58 @@
         this.classList.add('active');
       });
     });
+
+    // Particle effect setup
+    let particles = [];
+    let particleCount = 50;
+
+    function createParticle() {
+      let particle = {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 5 + 2,
+        speedX: Math.random() * 1 - 0.5,
+        speedY: Math.random() * 1 - 0.5
+      };
+      particles.push(particle);
+    }
+
+    function animateParticles() {
+      let canvas = document.getElementById("particles");
+      let ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle, index) => {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        if (particle.x > canvas.width || particle.x < 0 || particle.y > canvas.height || particle.y < 0) {
+          particles.splice(index, 1);
+          createParticle();
+        }
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+      createParticle();
+    }
+
+    animateParticles();
   </script>
 </body>
 </html>
+
 
 
 
