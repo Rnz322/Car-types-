@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,46 +81,36 @@
       background-color: #0066cc;
     }
 
-    section {
-      margin-bottom: 40px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 315px;
-      margin: 20px 0;
-      border: none;
-    }
-
-    /* Quiz Section */
-    .quiz {
-      margin-top: 30px;
-      background-color: #f4f4f4;
+    /* Popup Style */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
       padding: 30px;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
     }
 
-    .quiz h3 {
-      margin-bottom: 20px;
-      font-size: 1.3rem;
-    }
-
-    .quiz button {
-      background: #004080;
+    .popup button {
+      background-color: #004080;
       color: white;
       border: none;
       padding: 12px 20px;
-      margin: 10px 0;
-      cursor: pointer;
-      width: 100%;
       border-radius: 5px;
-      font-size: 1.1rem;
-      transition: background 0.3s;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    .quiz button:hover {
-      background: #0066cc;
+    .popup button:hover {
+      background-color: #0066cc;
     }
 
     /* Footer Style */
@@ -140,50 +131,6 @@
     footer a:hover {
       text-decoration: underline;
     }
-
-    /* Animation */
-    .animated-credit, .animated-tagline {
-      font-weight: bold;
-      font-size: 1.1rem;
-      background: linear-gradient(90deg, #ff0057, #00d2ff, #ffed00, #00ff90, #ff0057);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: colorFlow 5s linear infinite, floatUpDown 2s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    @keyframes colorFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes floatUpDown {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    /* Mobile responsiveness */
-    @media screen and (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .hero {
-        padding: 50px 0;
-      }
-
-      main {
-        padding: 20px 5%;
-      }
-    }
   </style>
 </head>
 <body>
@@ -201,7 +148,7 @@
     <section class="hero">
       <h1>Welcome to EduLearn</h1>
       <p>Your gateway to digital learning about cars and their engines!</p>
-      <button>Start Learning</button>
+      <button onclick="showPopup()">Start Learning</button>
     </section>
 
     <section id="home">
@@ -214,16 +161,6 @@
       <h2>Types of Car Engines and How They Work</h2>
       <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
-
-      <div class="quiz">
-        <h3>Quick Quiz</h3>
-        <ul>
-          <li><button>A. Inline</button></li>
-          <li><button>B. Rotary</button></li>
-          <li><button>C. V-type</button></li>
-          <li><button>D. Electric</button></li>
-        </ul>
-      </div>
     </section>
 
     <section id="about">
@@ -231,6 +168,13 @@
       <p>EduLearn is dedicated to providing accessible education through digital tools and resources.</p>
     </section>
   </main>
+
+  <!-- Popup Window -->
+  <div class="popup" id="popup">
+    <h2>Welcome to the Learning Platform!</h2>
+    <p>We’re excited to have you start your learning journey with us. Let's dive in!</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
 
   <footer>
     <p>Follow us on:
@@ -240,6 +184,18 @@
     </p>
     <p>&copy; 2025 EduLearn. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Function to show the popup
+    function showPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    // Function to close the popup
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
 </body>
 </html>
 
