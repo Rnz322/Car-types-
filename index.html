@@ -20,6 +20,9 @@
       text-align: center;
       position: relative;
     }
+    header:hover {
+      background: #263238;
+    }
     nav {
       margin-top: 10px;
     }
@@ -151,6 +154,7 @@
   </header>
 
   <main>
+    <!-- Car types section -->
     <section id="car-types">
       <h2 class="animated-tagline">The Different Car Types & Their Benefits</h2>
       <div class="animated-text">
@@ -167,6 +171,7 @@
       </div>
     </section>
 
+    <!-- Why important section -->
     <section id="why-important">
       <h2 class="animated-tagline">Why It’s Important to Know Different Car Types</h2>
       <div class="animated-text">
@@ -179,18 +184,18 @@
       </div>
     </section>
 
+    <!-- First car section with loader -->
     <section id="first-car">
       <h2 class="animated-tagline">First Car Ever Invented</h2>
       <div class="animated-text">
         <p>This is the picture of the first car invented:</p>
       </div>
       <div class="image-container">
-        <div id="loader" class="loader"></div>
+        <div class="loader" id="loader"></div>
         <img
           id="firstCarImage"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Benz_Patent_Motorwagen_1885_%281%29.jpg/640px-Benz_Patent_Motorwagen_1885_%281%29.jpg"
           alt="Benz Patent-Motorwagen"
-          style="display: none;"
         />
       </div>
       <div class="animated-text">
@@ -199,6 +204,7 @@
       </div>
     </section>
 
+    <!-- Engines + video section -->
     <section id="engines">
       <h2 class="animated-tagline">Types of Car Engines and How They Work</h2>
       <div class="animated-text">
@@ -217,6 +223,7 @@
       </div>
     </section>
 
+    <!-- Quiz link section -->
     <section id="quiz">
       <h2 class="animated-tagline">Interactive Car Knowledge Quiz</h2>
       <div class="animated-text">
@@ -225,6 +232,7 @@
       </div>
     </section>
 
+    <!-- About section -->
     <section id="about">
       <h2 class="animated-tagline">About EduLearn</h2>
       <div class="animated-text">
@@ -238,21 +246,21 @@
   </footer>
 
   <script>
-    const img = document.getElementById('firstCarImage');
-    const loader = document.getElementById('loader');
+    const img = document.getElementById("firstCarImage");
+    const loader = document.getElementById("loader");
 
-    img.addEventListener('load', function () {
-      loader.style.display = 'none';
-      img.style.display = 'block';
+    img.addEventListener("load", () => {
+      loader.style.display = "none";
     });
 
-    img.addEventListener('error', function () {
-      loader.style.display = 'none';
-      img.alt = 'Image failed to load.';
+    img.addEventListener("error", () => {
+      loader.style.display = "none";
+      img.alt = "Failed to load image.";
     });
   </script>
 </body>
 </html>
+
 
 
 
