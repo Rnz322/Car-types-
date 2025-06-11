@@ -15,23 +15,21 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
+      color: #333;
       background: url('https://raw.githubusercontent.com/Rnz322/Car-types-/main/background-animated.gif') center center no-repeat fixed;
       background-size: cover;
-      animation: animateBackground 5s infinite linear;
-      color: #333;
     }
 
-    @keyframes animateBackground {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 100% 100%;
-      }
+    #loading {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #fff url('https://i.imgur.com/kUYTZuP.gif') center center no-repeat;
+      z-index: 2000;
     }
 
     header {
-      background: linear-gradient(90deg, #1976d2, #42a5f5);
+      background: rgba(25, 118, 210, 0.9);
       color: white;
       padding: 20px 10%;
       display: flex;
@@ -43,6 +41,13 @@
       animation: slideIn 1s ease-out;
     }
 
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 2em;
+      color: white;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -52,27 +57,15 @@
     }
 
     nav a {
-      position: relative;
-      display: inline-block;
       color: white;
       text-decoration: none;
       font-weight: bold;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
     }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      left: 0;
-      bottom: -4px;
-      background-color: #ffeb3b;
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
+    nav a:hover, nav a.active {
+      text-decoration: underline;
+      color: #ffeb3b;
     }
 
     main {
@@ -90,6 +83,11 @@
       animation: fadeIn 1s ease forwards;
     }
 
+    section:hover {
+      transform: scale(1.01);
+      transition: transform 0.3s ease;
+    }
+
     section:nth-child(even) {
       animation-delay: 0.3s;
     }
@@ -103,6 +101,11 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     h1, h2 {
@@ -154,51 +157,32 @@
 
     .animated-text {
       font-size: 1.2em;
-      font-weight: normal;
       color: #00796b;
       opacity: 0;
       animation: fadeInText 2s ease forwards;
       margin-top: 20px;
     }
 
-    .quiz-button,
-    .quiz button {
-      background: #00796b;
+    .quiz-button {
+      display: inline-block;
+      background-color: #00796b;
       color: white;
-      border: none;
       padding: 15px 30px;
       font-size: 1.2em;
       border-radius: 6px;
       text-align: center;
       text-decoration: none;
       margin-top: 20px;
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    .quiz-button:hover,
-    .quiz button:hover {
+    .quiz-button:hover {
       background-color: #004d40;
       transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 20px;
-      transition: transform 0.5s ease, opacity 0.8s ease;
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    img.revealed {
-      opacity: 1;
-      transform: scale(1);
     }
 
     footer {
-      background: #1976d2;
+      background: rgba(25, 118, 210, 0.95);
       color: white;
       text-align: center;
       padding: 20px 10%;
@@ -222,30 +206,40 @@
         align-items: center;
       }
 
+      .menu-toggle {
+        display: block;
+      }
+
       nav ul {
+        display: none;
         flex-direction: column;
         align-items: center;
+        background: rgba(25, 118, 210, 0.95);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+      }
+
+      nav ul.open {
+        display: flex;
       }
 
       main {
         padding: 20px;
       }
-
-      .quiz-button {
-        width: 100%;
-      }
-
-      footer {
-        padding: 20px 5%;
-      }
     }
   </style>
 </head>
 <body>
+  <div id="loading"></div>
+  <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3" preload="auto"></audio>
+
   <header>
     <h1>EduLearn</h1>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
     <nav>
-      <ul>
+      <ul id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#lessons">Lessons</a></li>
         <li><a href="#about">About Us</a></li>
@@ -264,77 +258,80 @@
       <h3><span class="animated-icon">🚗</span> Hatchback</h3>
       <p>A hatchback is a versatile car with a rear door that swings upward...</p>
       <h3><span class="animated-icon">🚙</span> SUV</h3>
-      <p>An SUV (Sport Utility Vehicle) is perfect for families...</p>
+      <p>An SUV is perfect for families...</p>
       <h3><span class="animated-icon">🏎️</span> Sports Car</h3>
       <p>Sports cars are built for speed and performance...</p>
       <h3><span class="animated-icon">🚐</span> Minivan</h3>
       <p>Minivans are known for their large interiors...</p>
       <h3><span class="animated-icon">🚚</span> Pickup Truck</h3>
-      <p>Pickup trucks are great for hauling goods and towing...</p>
+      <p>Pickup trucks are great for hauling goods...</p>
     </section>
 
     <section>
-      <h2>Why is it important to know the different types of car and their uses?</h2>
-      <p>🚘 <strong>1. Informed Decision-Making</strong><br>Choose the right vehicle for your lifestyle: commuting, family, hauling, or performance.</p>
-      <p>💰 <strong>2. Cost-Efficiency</strong><br>Understand the impact of fuel, insurance, and maintenance for smarter spending.</p>
-      <p>🌍 <strong>3. Environmental Impact</strong><br>Make greener choices by knowing eco-friendly car types.</p>
-      <p>🛡️ <strong>4. Safety and Suitability</strong><br>Pick cars better suited for city driving, rough terrain, or big families.</p>
-      <p>🧠 <strong>5. General Knowledge</strong><br>Helpful for learning, buying/selling, and car conversations.</p>
-      <p>🧭 <strong>6. Future Readiness</strong><br>Prepare for electric and self-driving cars by knowing the basics.</p>
+      <h2>Why it is important to know the different types of car and their uses?</h2>
+      <p><strong>🚘 1. Informed Decision-Making</strong><br>Choose the right vehicle for your lifestyle.</p>
+      <p><strong>💰 2. Cost-Efficiency</strong><br>Save money by matching car type to budget and use.</p>
+      <p><strong>🌍 3. Environmental Impact</strong><br>Pick eco-friendly options for a sustainable future.</p>
+      <p><strong>🛡️ 4. Safety and Suitability</strong><br>Ensure the car fits road and travel conditions.</p>
+      <p><strong>🧠 5. General Knowledge</strong><br>Helps in discussions, education, and car decisions.</p>
+      <p><strong>🧭 6. Future Readiness</strong><br>Prepares you for electric and autonomous vehicle trends.</p>
     </section>
 
     <section id="first-car">
-      <p class="animated-tagline">This is the picture of the first car invented</p>
-      <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/55eb7115249b9558633ae377d7b003dd3aee1a47/1st.jpg" alt="Benz Patent-Motorwagen - First Car" />
+      <p class="animated-tagline" style="font-size: 1.1em;">This is the picture of the first car invented</p>
+      <img src="https://raw.githubusercontent.com/Rnz322/Car-types-/55eb7115249b9558633ae377d7b003dd3aee1a47/1st.jpg" alt="First Car" style="max-width: 400px; width: 100%; height: auto;" />
       <h2>Who invented the first car?</h2>
-      <p>The first modern automobile was invented by German engineer Karl Benz in 1885...</p>
+      <p>The first modern automobile was invented by Karl Benz in 1885...</p>
     </section>
 
     <section id="lessons">
       <h2>Types of Car Engines and How They Work</h2>
-      <p>Learn about different types of car engines like combustion and electric engines.</p>
+      <p>Learn about internal combustion engines, electric motors...</p>
       <iframe width="100%" height="315" src="https://www.youtube.com/embed/ghsXaJtc8zg" frameborder="0" allowfullscreen></iframe>
       <p class="animated-credit">Credit to the rightful owner of this video ↑</p>
-      <p class="animated-text"><strong>Why is it important to have a basic understanding of how a car works?</strong><br><br>It helps you maintain and troubleshoot vehicles more effectively.</p>
+      <p class="animated-text"><strong>Why is it important to have a basic understanding of how a car works?</strong><br><br>Understand mechanics, perform basic repairs, and make smarter decisions.</p>
     </section>
 
     <section id="about">
       <h2>About EduLearn</h2>
-      <p>EduLearn is dedicated to making interactive learning accessible and fun for all students.</p>
+      <p>EduLearn provides interactive education and engaging digital content for all learners.</p>
     </section>
 
     <section id="quiz-link">
       <h2>Interactive Car Knowledge Quiz</h2>
       <p>Want to test what you've learned? Take our interactive quiz now!</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform?usp=sharing&ouid=109538757198443097662" target="_blank" class="quiz-button">Start Quiz</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform" target="_blank" class="quiz-button">Start Quiz</a>
     </section>
   </main>
 
   <footer>
     <p>Made with ❤️ by EduLearn | &copy; 2025</p>
-    <p>
-      <a href="#">Privacy</a> | 
-      <a href="#">Terms</a>
-    </p>
+    <p><a href="#">Privacy</a> | <a href="#">Terms</a></p>
   </footer>
 
   <script>
-    const images = document.querySelectorAll('img');
+    window.addEventListener('load', () => {
+      document.getElementById('loading').style.display = 'none';
+    });
 
-    const revealOnScroll = () => {
-      images.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          img.classList.add('revealed');
-        }
-      });
-    };
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      playClick();
+    }
 
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+    function playClick() {
+      const sound = document.getElementById('clickSound');
+      sound.currentTime = 0;
+      sound.play();
+    }
+
+    document.querySelectorAll('a, .quiz-button, .quiz button').forEach(el => {
+      el.addEventListener('click', playClick);
+    });
   </script>
 </body>
 </html>
+
 
 
 
