@@ -20,9 +20,6 @@
       text-align: center;
       position: relative;
     }
-    header:hover {
-      background: #263238;
-    }
     nav {
       margin-top: 10px;
     }
@@ -188,12 +185,12 @@
         <p>This is the picture of the first car invented:</p>
       </div>
       <div class="image-container">
-        <div class="loader"></div>
+        <div id="loader" class="loader"></div>
         <img
+          id="firstCarImage"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Benz_Patent_Motorwagen_1885_%281%29.jpg/640px-Benz_Patent_Motorwagen_1885_%281%29.jpg"
           alt="Benz Patent-Motorwagen"
-          style="visibility: hidden; opacity: 0;"
-          onload="this.style.visibility='visible'; this.style.opacity='1'; this.previousElementSibling.style.display='none';"
+          style="display: none;"
         />
       </div>
       <div class="animated-text">
@@ -239,8 +236,24 @@
   <footer>
     <p>&copy; 2025 Different Types of Car and Their Uses. All rights reserved.</p>
   </footer>
+
+  <script>
+    const img = document.getElementById('firstCarImage');
+    const loader = document.getElementById('loader');
+
+    img.addEventListener('load', function () {
+      loader.style.display = 'none';
+      img.style.display = 'block';
+    });
+
+    img.addEventListener('error', function () {
+      loader.style.display = 'none';
+      img.alt = 'Image failed to load.';
+    });
+  </script>
 </body>
 </html>
+
 
 
 
