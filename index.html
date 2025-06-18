@@ -87,29 +87,6 @@
       transform: scale(1.05);
       opacity: 0.9;
     }
-    .image-container {
-      position: relative;
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto 20px;
-    }
-    .loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #00796b;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-    @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
     iframe {
       width: 100%;
       max-width: 900px;
@@ -145,7 +122,6 @@
     <nav>
       <a href="#car-types">Car Types</a>
       <a href="#why-important">Why It Matters</a>
-      <a href="#first-car">First Car</a>
       <a href="#engines">Engine Types</a>
       <a href="#videos">Videos</a>
       <a href="#quiz">Quiz</a>
@@ -181,26 +157,6 @@
         <p>🛡️ <strong>4. Safety and Suitability</strong><br>Match cars to terrain and needs.</p>
         <p>🧠 <strong>5. General Knowledge</strong><br>Useful for education and discussions.</p>
         <p>🧭 <strong>6. Future Readiness</strong><br>Stay ahead with EVs and autonomous cars.</p>
-      </div>
-    </section>
-
-    <!-- First car section with loader -->
-    <section id="first-car">
-      <h2 class="animated-tagline">First Car Ever Invented</h2>
-      <div class="animated-text">
-        <p>This is the picture of the first car invented:</p>
-      </div>
-      <div class="image-container">
-        <div class="loader" id="loader"></div>
-        <img
-          id="firstCarImage"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Benz_Patent_Motorwagen_1885_%281%29.jpg/640px-Benz_Patent_Motorwagen_1885_%281%29.jpg"
-          alt="Benz Patent-Motorwagen"
-        />
-      </div>
-      <div class="animated-text">
-        <h3>Who invented the first car?</h3>
-        <p>The first modern automobile was invented by German engineer Karl Benz in 1885...</p>
       </div>
     </section>
 
@@ -244,23 +200,8 @@
   <footer>
     <p>&copy; 2025 Different Types of Car and Their Uses. All rights reserved.</p>
   </footer>
-
-  <script>
-    const img = document.getElementById("firstCarImage");
-    const loader = document.getElementById("loader");
-
-    img.addEventListener("load", () => {
-      loader.style.display = "none";
-    });
-
-    img.addEventListener("error", () => {
-      loader.style.display = "none";
-      img.alt = "Failed to load image.";
-    });
-  </script>
 </body>
 </html>
-
 
 
 
