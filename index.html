@@ -50,6 +50,15 @@
     nav a:hover::after {
       width: 100%;
     }
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #ff6f00, #fdd835);
+      width: 0%;
+      z-index: 1000;
+    }
     main {
       padding: 40px 20px;
       max-width: 900px;
@@ -57,10 +66,10 @@
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
       border-radius: 10px;
-      position: relative;
     }
     section {
       margin-bottom: 40px;
+      transition: all 0.5s ease-in-out;
     }
     .animated-tagline, .animated-text {
       opacity: 0;
@@ -75,52 +84,106 @@
         transform: translateY(0);
       }
     }
-    .card {
-      background: #f9f9f9;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
+    img {
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      max-width: 100%;
+      height: auto;
     }
-    .card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      cursor: help;
-    }
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      background-color: #37474f;
-      color: #fff;
-      text-align: center;
-      padding: 5px;
-      border-radius: 6px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
+    img:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
     }
     iframe {
       width: 100%;
       max-width: 900px;
       height: 315px;
       border: none;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(20px);
       animation: fadeInUp 1s forwards;
       animation-delay: 0.6s;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 1 1 250px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      opacity: 0.95;
+    }
+    .tooltip {
+      position: relative;
+      cursor: help;
+    }
+    .tooltip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .quiz-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #ff6f00;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .quiz-button:hover {
+      background: #e65100;
+    }
+    .fun-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .fun-fact {
+      background: #fffde7;
+      border-left: 6px solid #ffeb3b;
+      padding: 15px;
+      border-radius: 8px;
+      flex: 1 1 250px;
+      transition: transform 0.3s ease;
+    }
+    .fun-fact:hover {
+      transform: scale(1.03);
+    }
+    .did-you-know-popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #fff59d;
+      padding: 15px 20px;
+      border: 2px solid #fbc02d;
+      border-radius: 10px;
+      font-size: 0.95em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
     }
     footer {
       background: #37474f;
@@ -128,54 +191,6 @@
       text-align: center;
       padding: 20px 0;
     }
-    .quiz-button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #00796b;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .quiz-button:hover {
-      background-color: #004d40;
-      transform: scale(1.05);
-    }
-    .fun-facts {
-      background: #e8f5e9;
-      padding: 20px;
-      border-radius: 10px;
-      border-left: 6px solid #388e3c;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .fact-item {
-      margin: 10px 0;
-    }
-    /* Scroll Progress Bar */
-    #progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 6px;
-      background: linear-gradient(to right, #4caf50, #ffab00);
-      z-index: 9999;
-    }
-    /* Pop-up Did You Know */
-    .popup {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #fff3cd;
-      color: #856404;
-      padding: 15px 20px;
-      border-left: 5px solid #ffc107;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      display: none;
-      z-index: 1000;
-    }
-
     @media (max-width: 768px) {
       nav {
         display: flex;
@@ -189,18 +204,18 @@
   </style>
 </head>
 <body>
-  <div id="progress-bar"></div>
-
+  <div class="scroll-progress" id="scrollBar"></div>
   <header>
     <h1>Different Types of Car and Their Uses</h1>
     <nav>
-      <a href="#intro">Intro</a>
+      <a href="#intro">Introduction</a>
       <a href="#car-types">Car Types</a>
-      <a href="#safety-tips">Safety</a>
+      <a href="#why-important">Why It Matters</a>
+      <a href="#engines">Engine Types</a>
+      <a href="#safety">Driving Safety</a>
       <a href="#maintenance">Maintenance</a>
       <a href="#eco">Eco Cars</a>
       <a href="#fun-facts">Fun Facts</a>
-      <a href="#videos">Videos</a>
       <a href="#quiz">Quiz</a>
       <a href="#about">About</a>
     </nav>
@@ -210,72 +225,98 @@
     <section id="intro">
       <h2 class="animated-tagline">Introduction to Cars and Their Role in Everyday Life</h2>
       <div class="animated-text">
-        <p>Cars are more than just machines—they shape the way we live, work, and connect with the world. They provide convenience, mobility, and freedom. Whether commuting to work, taking a road trip, or transporting goods, cars are essential in modern life.</p>
+        <p>🚘 Cars are essential tools for transportation, offering convenience, freedom, and efficiency in everyday life.</p>
+        <p>📦 They help deliver goods, commute to work, visit loved ones, and explore the world.</p>
+        <p>💡 Understanding cars helps in making informed choices about safety, sustainability, and functionality.</p>
       </div>
     </section>
 
     <section id="car-types">
       <h2 class="animated-tagline">The Different Car Types & Their Benefits</h2>
       <div class="animated-text">
-        <p>🚗 <strong>Hatchback:</strong> A versatile car with a rear door that swings upward.</p>
-        <p>🚙 <strong>SUV:</strong> Perfect for families with spacious interiors.</p>
-        <p>🏎️ <strong>Sports Car:</strong> Built for speed and performance.</p>
-        <p>🚐 <strong>Minivan:</strong> Known for large interiors and passenger space.</p>
-        <p>🚚 <strong>Pickup Truck:</strong> Great for hauling and off-road utility.</p>
+        <h3>🚗 Hatchback</h3>
+        <p>A hatchback is a versatile car with a rear door that swings upward...</p>
+        <h3>🚙 SUV</h3>
+        <p>An SUV is perfect for families...</p>
+        <h3>🏎️ Sports Car</h3>
+        <p>Sports cars are built for speed and performance...</p>
+        <h3>🚐 Minivan</h3>
+        <p>Minivans are known for their large interiors...</p>
+        <h3>🚚 Pickup Truck</h3>
+        <p>Pickup trucks are great for hauling goods...</p>
       </div>
     </section>
 
-    <section id="safety-tips">
+    <section id="why-important">
+      <h2 class="animated-tagline">Why It’s Important to Know Different Car Types</h2>
+      <div class="animated-text">
+        <p>🚘 <strong>1. Informed Decision-Making</strong><br>Choose the right vehicle for your lifestyle.</p>
+        <p>💰 <strong>2. Cost-Efficiency</strong><br>Save on fuel, maintenance, and insurance.</p>
+        <p>🌍 <strong>3. Environmental Impact</strong><br>Opt for eco-friendly options.</p>
+        <p>🛡️ <strong>4. Safety and Suitability</strong><br>Match cars to terrain and needs.</p>
+        <p>🧠 <strong>5. General Knowledge</strong><br>Useful for education and discussions.</p>
+        <p>🧭 <strong>6. Future Readiness</strong><br>Stay ahead with EVs and autonomous cars.</p>
+      </div>
+    </section>
+
+    <section id="engines">
+      <h2 class="animated-tagline">Types of Car Engines and How They Work</h2>
+      <div class="animated-text">
+        <p>Learn about different engine types: combustion, electric, and more.</p>
+        <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" allowfullscreen></iframe>
+        <p style="text-align:center;font-size:0.9em;">🎥 Credit to the rightful owner of the video above</p>
+        <p><strong>Why is it important to understand how a car works?</strong><br>
+        It helps diagnose issues, perform repairs, and make informed driving choices.</p>
+      </div>
+    </section>
+
+    <section id="safety">
       <h2 class="animated-tagline">Driving Safety Tips</h2>
       <div class="animated-text">
-        <p class="tooltip">🛡️ <strong>Always wear your seatbelt.</strong><span class="tooltiptext">Essential for survival in accidents.</span></p>
-        <p class="tooltip">📵 <strong>Avoid texting while driving.</strong><span class="tooltiptext">Keeps your focus on the road.</span></p>
-        <p class="tooltip">🛑 <strong>Follow traffic rules.</strong><span class="tooltiptext">Prevents collisions and keeps everyone safe.</span></p>
-        <p class="tooltip">💤 <strong>Don't drive drowsy.</strong><span class="tooltiptext">Fatigue slows reaction time.</span></p>
-        <p class="tooltip">🚗 <strong>Maintain a safe distance.</strong><span class="tooltiptext">Gives time to react.</span></p>
+        <p class="tooltip" data-tip="Always wear your seatbelt properly.">🛡️ Buckle Up</p>
+        <p class="tooltip" data-tip="Avoid texting, calling, or using apps while driving.">📵 Avoid Distractions</p>
+        <p class="tooltip" data-tip="Follow speed limits and adjust to road/weather.">🚦 Observe Speed Limits</p>
+        <p class="tooltip" data-tip="Keep a safe distance between you and the car in front.">🚗 Maintain Safe Distance</p>
+        <p class="tooltip" data-tip="Always check mirrors and blind spots.">👀 Be Aware of Surroundings</p>
       </div>
     </section>
 
     <section id="maintenance">
       <h2 class="animated-tagline">Basic Car Maintenance Tips</h2>
-      <div class="card">🛢️ <strong>Change the oil regularly.</strong> Prevents engine wear and tear.</div>
-      <div class="card">🚗 <strong>Check tire pressure.</strong> Ensures fuel efficiency and safety.</div>
-      <div class="card">🔋 <strong>Inspect the battery.</strong> Keeps your car starting reliably.</div>
-      <div class="card">💡 <strong>Test headlights and brake lights.</strong> Visibility is key to safety.</div>
-      <div class="card">🧊 <strong>Top up fluids (coolant, brake fluid, etc).</strong> Keeps systems working smoothly.</div>
+      <div class="card-container">
+        <div class="card">🔧 Check Engine Oil Regularly</div>
+        <div class="card">🚿 Clean Air Filters</div>
+        <div class="card">🔋 Test Your Battery</div>
+        <div class="card">🚘 Inspect Tires for Wear</div>
+        <div class="card">💡 Replace Burnt-Out Lights</div>
+      </div>
     </section>
 
     <section id="eco">
       <h2 class="animated-tagline">Eco-Friendly Cars & Sustainability</h2>
       <div class="animated-text">
-        <p>🌱 <strong>Hybrid Cars:</strong> Combine electric and gas power for better mileage.</p>
-        <p>🔋 <strong>Electric Vehicles (EVs):</strong> Zero emissions and low maintenance.</p>
-        <p>🌍 <strong>Why It Matters:</strong> Reduces carbon footprint, air pollution, and conserves fossil fuels.</p>
+        <p>🌱 Electric and hybrid cars help reduce carbon emissions.</p>
+        <p>🔋 Sustainable technology includes battery-powered engines and solar-assisted systems.</p>
+        <p>♻️ Eco-driving habits like efficient acceleration and reduced idling save fuel.</p>
       </div>
     </section>
 
     <section id="fun-facts">
-      <h2 class="animated-tagline">🚘 Fun Car Facts</h2>
+      <h2 class="animated-tagline">🚗 Fun Car Facts!</h2>
       <div class="fun-facts">
-        <p class="fact-item">🧠 The first car was invented in 1885 by Karl Benz.</p>
-        <p class="fact-item">🚗 The average car has over 30,000 parts!</p>
-        <p class="fact-item">💨 The fastest car can go over 300 mph.</p>
-        <p class="fact-item">🔋 Some EVs can travel over 400 miles on a single charge.</p>
+        <div class="fun-fact">💨 The first car only had 3 wheels and a top speed of 10 mph!</div>
+        <div class="fun-fact">🔋 Modern EVs can travel over 300 miles on a single charge.</div>
+        <div class="fun-fact">🏁 NASCAR cars can go over 200 mph!</div>
+        <div class="fun-fact">🚗 The most sold car ever is the Toyota Corolla.</div>
       </div>
     </section>
 
-    <section id="videos">
-      <h2 class="animated-tagline">Types of Car Engines and How They Work</h2>
-      <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" allowfullscreen></iframe>
-      <p class="animated-text">Credit to the rightful owner of this video ↑</p>
-      <p class="animated-text"><strong>Why is it important to understand how a car works?</strong><br>
-        It helps diagnose issues, perform repairs, and make informed driving choices.</p>
-    </section>
-
     <section id="quiz">
-      <h2 class="animated-tagline">Test Your Car Knowledge</h2>
-      <p class="animated-text">Think you know everything about cars? Prove it!</p>
-      <a class="quiz-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform" target="_blank">Start Quiz</a>
+      <h2 class="animated-tagline">Interactive Car Knowledge Quiz</h2>
+      <div class="animated-text">
+        <p>Test your learning with a fun quiz!</p>
+        <a class="quiz-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform" target="_blank">Start Quiz</a>
+      </div>
     </section>
 
     <section id="about">
@@ -290,42 +331,22 @@
     <p>&copy; 2025 Different Types of Car and Their Uses. All rights reserved.</p>
   </footer>
 
-  <div class="popup" id="popup-fact">
-    🚘 Did You Know? The average car spends 95% of its time parked!
+  <div class="did-you-know-popup">
+    🚘 Did You Know? The world’s first speeding ticket was issued in 1896 for going 8 mph!
   </div>
 
   <script>
-    // Scroll Progress Bar
-    const progressBar = document.getElementById('progress-bar');
-    window.onscroll = () => {
+    window.addEventListener('scroll', () => {
+      const scrollBar = document.getElementById('scrollBar');
+      const scrolled = window.scrollY;
       const height = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollTop = window.scrollY;
-      const progress = (scrollTop / height) * 100;
-      progressBar.style.width = progress + "%";
-    };
-
-    // Animate maintenance cards
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    cards.forEach(card => observer.observe(card));
-
-    // Pop-up Did You Know?
-    setTimeout(() => {
-      document.getElementById('popup-fact').style.display = 'block';
-    }, 2500);
-    setTimeout(() => {
-      document.getElementById('popup-fact').style.display = 'none';
-    }, 10000);
+      const width = (scrolled / height) * 100;
+      scrollBar.style.width = width + '%';
+    });
   </script>
 </body>
 </html>
+
 
 
 
