@@ -18,7 +18,6 @@
       color: #fff;
       padding: 20px 0;
       text-align: center;
-      position: relative;
     }
     header:hover {
       background: #263238;
@@ -60,7 +59,6 @@
     }
     section {
       margin-bottom: 40px;
-      transition: all 0.5s ease-in-out;
     }
     .animated-tagline, .animated-text {
       opacity: 0;
@@ -93,10 +91,6 @@
       height: 315px;
       border: none;
       margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s forwards;
-      animation-delay: 0.6s;
     }
     footer {
       background: #37474f;
@@ -115,8 +109,8 @@
       }
     }
 
-    /* Tip Cards for Maintenance Section */
-    #maintenance .card-container {
+    /* Shared Card Styles */
+    .card-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
@@ -167,13 +161,13 @@
       <a href="#engines">Engine Types</a>
       <a href="#videos">Videos</a>
       <a href="#quiz">Quiz</a>
+      <a href="#safety">Driving Safety</a>
       <a href="#maintenance">Maintenance</a>
       <a href="#about">About</a>
     </nav>
   </header>
 
   <main>
-    <!-- Existing Sections Remain Unchanged -->
     <section id="car-types">
       <h2 class="animated-tagline">The Different Car Types & Their Benefits</h2>
       <div class="animated-text">
@@ -211,9 +205,6 @@
 
     <section id="videos">
       <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" allowfullscreen></iframe>
-      <div class="animated-credit">
-        Credit to the rightful owner of this video ↑
-      </div>
       <div class="animated-text">
         <p><strong>Why is it important to understand how a car works?</strong><br>
         It helps diagnose issues, perform repairs, and make informed driving choices.</p>
@@ -228,7 +219,34 @@
       </div>
     </section>
 
-    <!-- 🔧 Basic Car Maintenance Tips Section -->
+    <!-- 🚦 Driving Safety Tips Section -->
+    <section id="safety">
+      <h2 class="animated-tagline">Driving Safety Tips</h2>
+      <div class="card-container">
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Always buckle up before driving.">🔒</div>
+          <p>Wear Seatbelts</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Never use your phone while driving.">📵</div>
+          <p>Avoid Distractions</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Follow posted speed limits.">🚦</div>
+          <p>Obey Speed Limits</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Keep a safe distance from the car ahead.">↔️</div>
+          <p>Keep Safe Distance</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Do not drive if you're tired.">😴</div>
+          <p>Don’t Drive Drowsy</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔧 Maintenance Tips -->
     <section id="maintenance">
       <h2 class="animated-tagline">Basic Car Maintenance Tips</h2>
       <div class="card-container">
@@ -267,7 +285,6 @@
     <p>&copy; 2025 Different Types of Car and Their Uses. All rights reserved.</p>
   </footer>
 
-  <!-- ✨ Scroll Animation Script -->
   <script>
     const cards = document.querySelectorAll('.tip-card');
     const observer = new IntersectionObserver(entries => {
@@ -277,11 +294,11 @@
         }
       });
     }, { threshold: 0.1 });
-
     cards.forEach(card => observer.observe(card));
   </script>
 </body>
 </html>
+
 
 
 
