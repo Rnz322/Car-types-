@@ -18,6 +18,7 @@
       color: #fff;
       padding: 20px 0;
       text-align: center;
+      position: relative;
     }
     header:hover {
       background: #263238;
@@ -53,12 +54,13 @@
       padding: 40px 20px;
       max-width: 900px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
       border-radius: 10px;
     }
     section {
       margin-bottom: 40px;
+      transition: all 0.5s ease-in-out;
     }
     .animated-tagline, .animated-text {
       opacity: 0;
@@ -91,6 +93,104 @@
       height: 315px;
       border: none;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 0.6s;
+    }
+    .animated-credit {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 200px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    .maintenance-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .card {
+      flex: 1 1 250px;
+      background: #fafafa;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .reveal {
+      animation: slideUp 0.8s forwards ease-in-out;
+    }
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fun-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .fun-fact {
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ffe082;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+    }
+    .fun-fact:hover {
+      transform: scale(1.03);
+      background: #fff3b0;
+    }
+    .interactive-quiz a {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #00796b;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .interactive-quiz a:hover {
+      background: #004d40;
     }
     footer {
       background: #37474f;
@@ -107,67 +207,53 @@
       nav a {
         margin: 10px 0;
       }
-    }
-
-    /* Shared Card Styles */
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .tip-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .tip-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .tip-card .icon {
-      font-size: 30px;
-      margin-bottom: 10px;
-      cursor: help;
-      position: relative;
-    }
-    .tip-card .icon:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: #fff;
-      padding: 6px 10px;
-      border-radius: 5px;
-      font-size: 13px;
-      white-space: nowrap;
-      z-index: 10;
+      .maintenance-cards {
+        flex-direction: column;
+      }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      cards.forEach(card => observer.observe(card));
+    });
+  </script>
 </head>
 <body>
   <header>
     <h1>Different Types of Car and Their Uses</h1>
     <nav>
+      <a href="#intro">Introduction</a>
       <a href="#car-types">Car Types</a>
       <a href="#why-important">Why It Matters</a>
       <a href="#engines">Engine Types</a>
+      <a href="#safety">Driving Safety Tips</a>
+      <a href="#maintenance">Maintenance</a>
+      <a href="#funfacts">Fun Facts</a>
       <a href="#videos">Videos</a>
       <a href="#quiz">Quiz</a>
-      <a href="#safety">Driving Safety</a>
-      <a href="#maintenance">Maintenance</a>
       <a href="#about">About</a>
     </nav>
   </header>
 
   <main>
+    <section id="intro">
+      <h2 class="animated-tagline">Introduction to Cars and Their Role in Everyday Life</h2>
+      <div class="animated-text">
+        <p>Cars play a vital role in modern society, providing personal freedom and economic opportunities. They help people travel for work, leisure, and daily necessities. From commuting to school to transporting goods, cars are a core part of everyday living.</p>
+      </div>
+    </section>
+
     <section id="car-types">
       <h2 class="animated-tagline">The Different Car Types & Their Benefits</h2>
       <div class="animated-text">
@@ -203,73 +289,55 @@
       </div>
     </section>
 
+    <section id="safety">
+      <h2 class="animated-tagline">Driving Safety Tips</h2>
+      <div class="animated-text">
+        <p class="tooltip">🚦 Obey traffic rules<span class="tooltiptext">Follow speed limits and signals.</span></p>
+        <p class="tooltip">🛡️ Always wear your seatbelt<span class="tooltiptext">It saves lives in accidents.</span></p>
+        <p class="tooltip">📵 Avoid distractions<span class="tooltiptext">Don’t use your phone while driving.</span></p>
+        <p class="tooltip">💤 Rest when tired<span class="tooltiptext">Driving drowsy is dangerous.</span></p>
+        <p class="tooltip">🔧 Maintain your car<span class="tooltiptext">A healthy car is a safe car.</span></p>
+      </div>
+    </section>
+
+    <section id="maintenance">
+      <h2 class="animated-tagline">Basic Car Maintenance Tips</h2>
+      <div class="maintenance-cards">
+        <div class="card"><div class="card-icon">🛢️</div><h4>Check Oil Regularly</h4><p>Maintain engine health by checking oil monthly.</p></div>
+        <div class="card"><div class="card-icon">🔋</div><h4>Test the Battery</h4><p>Ensure your battery terminals are clean and tight.</p></div>
+        <div class="card"><div class="card-icon">💨</div><h4>Monitor Tire Pressure</h4><p>Use a gauge and inflate tires to correct PSI.</p></div>
+        <div class="card"><div class="card-icon">💡</div><h4>Inspect Lights</h4><p>Make sure headlights, brake lights, and signals work.</p></div>
+        <div class="card"><div class="card-icon">🧽</div><h4>Keep It Clean</h4><p>Regular washing prevents rust and improves visibility.</p></div>
+      </div>
+    </section>
+
+    <section id="funfacts">
+      <h2 class="animated-tagline">Fun Facts About Cars</h2>
+      <div class="fun-facts">
+        <div class="fun-fact">🚗 The first car was built in 1885 by Karl Benz.</div>
+        <div class="fun-fact">🏁 The world’s fastest car can reach speeds over 300 mph.</div>
+        <div class="fun-fact">⚡ Electric cars date back to the 1800s!</div>
+        <div class="fun-fact">🛣️ There are over 1.4 billion cars in the world today.</div>
+        <div class="fun-fact">🚦 The first traffic light was installed in 1868 in London.</div>
+      </div>
+    </section>
+
     <section id="videos">
       <iframe src="https://www.youtube.com/embed/ghsXaJtc8zg" allowfullscreen></iframe>
+      <div class="animated-credit">
+        Credit to the rightful owner of this video ↑
+      </div>
       <div class="animated-text">
         <p><strong>Why is it important to understand how a car works?</strong><br>
         It helps diagnose issues, perform repairs, and make informed driving choices.</p>
       </div>
     </section>
 
-    <section id="quiz">
+    <section id="quiz" class="interactive-quiz">
       <h2 class="animated-tagline">Interactive Car Knowledge Quiz</h2>
       <div class="animated-text">
         <p>Test your learning with a fun quiz!</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform" target="_blank">Start Quiz</a>
-      </div>
-    </section>
-
-    <!-- 🚦 Driving Safety Tips Section -->
-    <section id="safety">
-      <h2 class="animated-tagline">Driving Safety Tips</h2>
-      <div class="card-container">
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Always buckle up before driving.">🔒</div>
-          <p>Wear Seatbelts</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Never use your phone while driving.">📵</div>
-          <p>Avoid Distractions</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Follow posted speed limits.">🚦</div>
-          <p>Obey Speed Limits</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Keep a safe distance from the car ahead.">↔️</div>
-          <p>Keep Safe Distance</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Do not drive if you're tired.">😴</div>
-          <p>Don’t Drive Drowsy</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 🔧 Maintenance Tips -->
-    <section id="maintenance">
-      <h2 class="animated-tagline">Basic Car Maintenance Tips</h2>
-      <div class="card-container">
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Check your oil at least once a month.">🛢️</div>
-          <p>Check Oil Levels</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Inspect your tires for pressure and wear.">🚗</div>
-          <p>Inspect Tires</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Replace your wipers every 6–12 months.">🌧️</div>
-          <p>Replace Wiper Blades</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Look for leaks and cracked hoses.">🔧</div>
-          <p>Check for Leaks</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon" data-tooltip="Clean your battery terminals regularly.">🔋</div>
-          <p>Maintain the Battery</p>
-        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCYGnTtExpSQ9Q2Oe1LoTV_IrHV8KlQmc4sf0tQSVy_LS74g/viewform" target="_blank">Take the Quiz</a>
       </div>
     </section>
 
@@ -284,18 +352,6 @@
   <footer>
     <p>&copy; 2025 Different Types of Car and Their Uses. All rights reserved.</p>
   </footer>
-
-  <script>
-    const cards = document.querySelectorAll('.tip-card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    cards.forEach(card => observer.observe(card));
-  </script>
 </body>
 </html>
 
