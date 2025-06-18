@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Different Types of Car and Their Uses</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
@@ -88,23 +87,6 @@
       transform: scale(1.05);
       opacity: 0.9;
     }
-    .loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #00796b;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-    @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
     iframe {
       width: 100%;
       max-width: 900px;
@@ -122,15 +104,6 @@
       text-align: center;
       padding: 20px 0;
     }
-    .animated-tip {
-      margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s forwards;
-    }
-    .animated-tip i {
-      margin-right: 8px;
-    }
     @media (max-width: 768px) {
       nav {
         display: flex;
@@ -140,6 +113,48 @@
       nav a {
         margin: 10px 0;
       }
+    }
+
+    /* Tip Cards for Maintenance Section */
+    #maintenance .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .tip-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .tip-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tip-card .icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+      cursor: help;
+      position: relative;
+    }
+    .tip-card .icon:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      white-space: nowrap;
+      z-index: 10;
     }
   </style>
 </head>
@@ -152,13 +167,13 @@
       <a href="#engines">Engine Types</a>
       <a href="#videos">Videos</a>
       <a href="#quiz">Quiz</a>
-      <a href="#safety-tips">Safety Tips</a>
+      <a href="#maintenance">Maintenance</a>
       <a href="#about">About</a>
     </nav>
   </header>
 
   <main>
-    <!-- Car types section -->
+    <!-- Existing Sections Remain Unchanged -->
     <section id="car-types">
       <h2 class="animated-tagline">The Different Car Types & Their Benefits</h2>
       <div class="animated-text">
@@ -175,7 +190,6 @@
       </div>
     </section>
 
-    <!-- Why important section -->
     <section id="why-important">
       <h2 class="animated-tagline">Why It’s Important to Know Different Car Types</h2>
       <div class="animated-text">
@@ -188,7 +202,6 @@
       </div>
     </section>
 
-    <!-- Engines + video section -->
     <section id="engines">
       <h2 class="animated-tagline">Types of Car Engines and How They Work</h2>
       <div class="animated-text">
@@ -207,7 +220,6 @@
       </div>
     </section>
 
-    <!-- Quiz link section -->
     <section id="quiz">
       <h2 class="animated-tagline">Interactive Car Knowledge Quiz</h2>
       <div class="animated-text">
@@ -216,54 +228,33 @@
       </div>
     </section>
 
-    <!-- Driving Safety Tips section -->
-    <section id="safety-tips">
-      <h2 class="animated-tagline">Essential Driving Safety Tips</h2>
-
-      <div class="animated-tip tip1">
-        <i class="fas fa-seatbelt" title="Always wear your seatbelt" style="color:#00796b;"></i>
-        <strong>1. Always Wear Your Seatbelt</strong><br>
-        It's the simplest and most effective way to save lives in an accident.
-      </div>
-
-      <div class="animated-tip tip2">
-        <i class="fas fa-mobile-alt" title="Avoid distractions while driving" style="color:#d32f2f;"></i>
-        <strong>2. Avoid Distractions</strong><br>
-        Stay focused—don’t text, eat, or use your phone while driving.
-      </div>
-
-      <div class="animated-tip tip3">
-        <i class="fas fa-tachometer-alt" title="Follow speed limits" style="color:#f57c00;"></i>
-        <strong>3. Follow Speed Limits</strong><br>
-        Speeding increases the risk of accidents and makes them more severe.
-      </div>
-
-      <div class="animated-tip tip4">
-        <i class="fas fa-random" title="Use your turn signals" style="color:#303f9f;"></i>
-        <strong>4. Use Turn Signals</strong><br>
-        Let others know your intentions to reduce confusion and prevent collisions.
-      </div>
-
-      <div class="animated-tip tip5">
-        <i class="fas fa-ban" title="Never drive under the influence" style="color:#c2185b;"></i>
-        <strong>5. Never Drive Under the Influence</strong><br>
-        Alcohol and drugs severely impair your judgment and reaction time.
-      </div>
-
-      <div class="animated-tip tip6">
-        <i class="fas fa-cloud-showers-heavy" title="Adjust driving for weather conditions" style="color:#0288d1;"></i>
-        <strong>6. Adjust for Weather Conditions</strong><br>
-        Drive slower and increase your following distance in rain or fog.
-      </div>
-
-      <div class="animated-tip tip7">
-        <i class="fas fa-bed" title="Stay alert and well-rested" style="color:#6a1b9a;"></i>
-        <strong>7. Stay Alert & Rested</strong><br>
-        Fatigue can be just as dangerous as being drunk behind the wheel.
+    <!-- 🔧 Basic Car Maintenance Tips Section -->
+    <section id="maintenance">
+      <h2 class="animated-tagline">Basic Car Maintenance Tips</h2>
+      <div class="card-container">
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Check your oil at least once a month.">🛢️</div>
+          <p>Check Oil Levels</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Inspect your tires for pressure and wear.">🚗</div>
+          <p>Inspect Tires</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Replace your wipers every 6–12 months.">🌧️</div>
+          <p>Replace Wiper Blades</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Look for leaks and cracked hoses.">🔧</div>
+          <p>Check for Leaks</p>
+        </div>
+        <div class="tip-card">
+          <div class="icon" data-tooltip="Clean your battery terminals regularly.">🔋</div>
+          <p>Maintain the Battery</p>
+        </div>
       </div>
     </section>
 
-    <!-- About section -->
     <section id="about">
       <h2 class="animated-tagline">About EduLearn</h2>
       <div class="animated-text">
@@ -275,8 +266,23 @@
   <footer>
     <p>&copy; 2025 Different Types of Car and Their Uses. All rights reserved.</p>
   </footer>
+
+  <!-- ✨ Scroll Animation Script -->
+  <script>
+    const cards = document.querySelectorAll('.tip-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
 </body>
 </html>
+
 
 
 
